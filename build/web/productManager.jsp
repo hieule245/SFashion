@@ -10,51 +10,51 @@
 <%@ page import="java.util.Base64" %>
 <!DOCTYPE html>
 <html lang="en">
-<%
-// Check for success message and display alert
-    String Message =(String) session.getAttribute("Message");
-    if (Message != null) {
-    out.println("<script>");
-    out.println("alert('" + Message + "');");
-    out.println("</script>");
-    session.removeAttribute("Message");
-    }
-    String search =(String) session.getAttribute("search");
-    if (search == null || search =="") {
-        search="";
-    }
-%>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <%
+    // Check for success message and display alert
+        String Message = (String) session.getAttribute("Message");
+        if (Message != null) {
+            out.println("<script>");
+            out.println("alert('" + Message + "');");
+            out.println("</script>");
+            session.removeAttribute("Message");
+        }
+        String search = (String) session.getAttribute("search");
+        if (search == null || search == "") {
+            search = "";
+        }
+    %>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
-<script>
-    $(document).ready(function() {
-        $('#addProduct').on('input', '#priceInput', function() {
-            var price = parseFloat($(this).val());
-            var serviceFeeInput = $('#addProduct #serviceFeeInput');
-            var receiveMoneyInput = $('#addProduct #receiveMoneyInput');
-            if (!isNaN(price)) {
-                var serviceFee = price * 0.1; // Example: 10% of the price
-                var receiveMoney = price - serviceFee;
-                serviceFeeInput.val(serviceFee.toFixed(2));
-                receiveMoneyInput.val(receiveMoney.toFixed(2));
-            }
+    <script>
+        $(document).ready(function () {
+            $('#addProduct').on('input', '#priceInput', function () {
+                var price = parseFloat($(this).val());
+                var serviceFeeInput = $('#addProduct #serviceFeeInput');
+                var receiveMoneyInput = $('#addProduct #receiveMoneyInput');
+                if (!isNaN(price)) {
+                    var serviceFee = price * 0.1; // Example: 10% of the price
+                    var receiveMoney = price - serviceFee;
+                    serviceFeeInput.val(serviceFee.toFixed(2));
+                    receiveMoneyInput.val(receiveMoney.toFixed(2));
+                }
+            });
         });
-    });
-    $(document).ready(function() {
-        $('#editProduct').on('input', '#priceInput', function() {
-            var price = parseFloat($(this).val());
-            var serviceFeeInput = $('#editProduct #serviceFeeInput');
-            var receiveMoneyInput = $('#editProduct #receiveMoneyInput');
-            if (!isNaN(price)) {
-                var serviceFee = price * 0.1; // Example: 10% of the price
-                var receiveMoney = price - serviceFee;
-                serviceFeeInput.val(serviceFee.toFixed(2));
-                receiveMoneyInput.val(receiveMoney.toFixed(2));
-            }
+        $(document).ready(function () {
+            $('#editProduct').on('input', '#priceInput', function () {
+                var price = parseFloat($(this).val());
+                var serviceFeeInput = $('#editProduct #serviceFeeInput');
+                var receiveMoneyInput = $('#editProduct #receiveMoneyInput');
+                if (!isNaN(price)) {
+                    var serviceFee = price * 0.1; // Example: 10% of the price
+                    var receiveMoney = price - serviceFee;
+                    serviceFeeInput.val(serviceFee.toFixed(2));
+                    receiveMoneyInput.val(receiveMoney.toFixed(2));
+                }
+            });
         });
-    });
-</script>
+    </script>
     <head>
         <meta charset="utf-8">
         <title>CART FASHION</title>
@@ -75,7 +75,7 @@
         <!-- Libraries Stylesheet -->
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
-        
+
         <!-- Others -->
         <title>Bootstrap CRUD Data Table for Database with Modal Form</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
@@ -98,7 +98,7 @@
             }
         </style>
     </head>
-    
+
     <body>
         <%@include file="header.jsp" %>
         <!-- Page Header Start -->
@@ -125,7 +125,7 @@
                         <div class="col-lg-5 col-5 text-left">
                             <form action="productManagerController">
                                 <div class="input-group">
-                                    <input name="search" id="input-search" type="text" class="form-control" placeholder="Search for Products" value = "<%= search %>">
+                                    <input name="search" id="input-search" type="text" class="form-control" placeholder="Search for Products" value = "<%= search%>">
                                     <button type="submit" name="action" value="search" class="btn btn-outline-primary d-flex align-items-center" style="border: none; background: none;">
                                         <span class="input-group-text bg-transparent text-primary">
                                             <i class="fa fa-search"></i>
@@ -135,9 +135,9 @@
                             </form>
                         </div>
                         <c:if test="${sessionScope.user.getRole() == '2'}">
-                        <div class="col-lg-3 col-5 text-right">
-                            <a href="#addProduct"  class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Product</span></a>
-                        </div>
+                            <div class="col-lg-3 col-5 text-right">
+                                <a href="#addProduct"  class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Product</span></a>
+                            </div>
                         </c:if>
                     </div>
                 </div>
@@ -146,7 +146,8 @@
                         <tr>
                             <th class="align-middle">ID</th>
                             <th class="align-middle">Name</th>
-                            <th class="align-middle">Image</th>
+                            <th class="align-middle">Image</th>  
+                            <th class="align-middle">Owner</th>
                             <th class="align-middle">Quantity</th>
                             <th class="align-middle">Price</th>
                             <th class="align-middle">Status</th>
@@ -163,106 +164,107 @@
                                         <img src="data:image/jpeg;base64,${o.images[0].getImg()}" alt="Image" />
                                     </c:if>
                                 </td>
+                                <td class="align-middle">${o.user.username}</td>
                                 <td class="align-middle">${o.quantity}</td>
                                 <td class="align-middle">${o.price} $</td>
-                                    <c:if test="${o.status == '0'}">
-                                        <td class="align-middle inactive-product">Inactive</td>
-                                    </c:if>
+                                <c:if test="${o.status == '0'}">
+                                    <td class="align-middle inactive-product">Inactive</td>
+                                </c:if>
 
-                                    <c:if test="${o.status == '1'}">
-                                        <td class="align-middle active-product">Active</td>
-                                    </c:if>
-                                        <c:if test="${o.status == '2'}">
-                                        <td class="align-middle blocked-product">Blocked</td>
-                                    </c:if>
+                                <c:if test="${o.status == '1'}">
+                                    <td class="align-middle active-product">Active</td>
+                                </c:if>
+                                <c:if test="${o.status == '2'}">
+                                    <td class="align-middle blocked-product">Blocked</td>
+                                </c:if>
                                 <td>
                                     <form action="productManagerController" method="POST" id="signup-form" class="btn">
                                         <input type="hidden" name="product_id" id="product_id" value="${o.productId}"/>
                                         <div>
                                             <%-- Duyệt/vô hiệu hoá sản phẩm của admin --%>
-                                        <c:if test="${sessionScope.user.getRole() == '1'}">
-                                            <c:if test="${o.status == '0'}">
-                                                <button type="submit" name="action" value="changeStatus" class="btn btn-primary">Activate</button>
-                                            </c:if>
+                                            <c:if test="${sessionScope.user.getRole() == '1'}">
+                                                <c:if test="${o.status == '0'}">
+                                                    <button type="submit" name="action" value="changeStatus" class="btn btn-primary">Activate</button>
+                                                </c:if>
 
-                                            <c:if test="${o.status == '1'}">
-                                                <button type="submit" name="action" value="changeStatus" class="btn btn-primary">Inactivate</button>
+                                                <c:if test="${o.status == '1'}">
+                                                    <button type="submit" name="action" value="changeStatus" class="btn btn-primary">Inactivate</button>
+                                                </c:if>
                                             </c:if>
-                                        </c:if>
                                             <%-- --%>
-                                        <a href="#editProduct"  class="btn btn-primary" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                        <c:if test="${sessionScope.user.getRole() == '2'}">
-                                            <c:if test="${o.status == '1'}">
-                                                <a href="changeProductStatusController?pid=${o.productId}&status=${o.status}&action=block" type="submit" name="action" value="changeStatus" class="btn btn-primary">Block</a>
-                                            </c:if>
+                                            <a href="#editProduct"  class="btn btn-primary" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                            <c:if test="${sessionScope.user.getRole() == '2'}">
+                                                <c:if test="${o.status == '1'}">
+                                                    <a href="changeProductStatusController?pid=${o.productId}&status=${o.status}&action=block" type="submit" name="action" value="changeStatus" class="btn btn-primary">Block</a>
+                                                </c:if>
 
-                                            <c:if test="${o.status == '2'}">
-                                                <a href="changeProductStatusController?pid=${o.productId}&status=${o.status}&action=unblock" type="submit" name="action" value="changeStatus" class="btn btn-primary">UnBlock</a>
+                                                <c:if test="${o.status == '2'}">
+                                                    <a href="changeProductStatusController?pid=${o.productId}&status=${o.status}&action=unblock" type="submit" name="action" value="changeStatus" class="btn btn-primary">UnBlock</a>
+                                                </c:if>
                                             </c:if>
-                                        </c:if>
-                                    </div>
+                                        </div>
                                     </form>
                                 </td>
                             </tr>
                             <!-- Edit Modal HTML -->
-        <div id="editProduct" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form action="addProductController" method="POST">
-                        <input type="hidden" name="pid" value="${o.productId}">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Edit Product</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        </div>
-                        <div class="modal-body">					
-                            <div class="form-group">
-                                <label>Name</label>
-                                <input name="name" type="text" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Price</label>
-                                <input id="priceInput" name="price" type="number" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Service Fee</label>
-                                        <input id="serviceFeeInput" name="serviceFee" type="number" class="form-control" disabled>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>You Will Get</label>
-                                        <input id="receiveMoneyInput" name="receiveMoney" type="number" class="form-control" disabled>
-                                    </div>
+                        <div id="editProduct" class="modal fade">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <form action="addProductController" method="POST">
+                                        <input type="hidden" name="pid" value="${o.productId}">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Edit Product</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        </div>
+                                        <div class="modal-body">					
+                                            <div class="form-group">
+                                                <label>Name</label>
+                                                <input name="name" type="text" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Price</label>
+                                                <input id="priceInput" name="price" type="number" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <label>Service Fee</label>
+                                                        <input id="serviceFeeInput" name="serviceFee" type="number" class="form-control" disabled>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label>You Will Get</label>
+                                                        <input id="receiveMoneyInput" name="receiveMoney" type="number" class="form-control" disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Quality</label>
+                                                <input type="number" min="0" class="form-control" name="quantity" id="quantity" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Description</label>
+                                                <textarea name="description" class="form-control" required></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Category</label>
+                                                <select name="category" class="form-select" aria-label="Default select example">
+                                                    <c:forEach items="${sessionScope.listCC}" var="o"><%-- Vòng lặp list categories ra --%>
+                                                        <option value="${o.categoryId}">${o.name}</option>
+                                                    </c:forEach>
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                            <input type="submit" name="action" class="btn btn-success" value="Edit">
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label>Quality</label>
-                                <input type="number" min="0" class="form-control" name="quantity" id="quantity" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Description</label>
-                                <textarea name="description" class="form-control" required></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>Category</label>
-                                <select name="category" class="form-select" aria-label="Default select example">
-                                    <c:forEach items="${sessionScope.listCC}" var="o"><%-- Vòng lặp list categories ra --%>
-                                        <option value="${o.categoryId}">${o.name}</option>
-                                    </c:forEach>
-                                </select>
-                            </div>
-
                         </div>
-                        <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                            <input type="submit" name="action" class="btn btn-success" value="Edit">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- Cart End -->
-                        </c:forEach>
+                        <!-- Cart End -->
+                    </c:forEach>
                     </tbody>
                 </table>      
                 <div class="clearfix">
@@ -270,7 +272,7 @@
                     <ul class="pagination">
                         <c:forEach begin="1" end="${endPage}" var="i">
                             <li class="page-item ${tag==i?"acvive":""}"><a href="productManagerController?index=${i}" class="page-link">${i}</a></li>
-                        </c:forEach>
+                            </c:forEach>
                     </ul>
                 </div>
             </div>

@@ -71,6 +71,15 @@ public class ShoppingCart {
         totalPrice = totalPrice.add(BigDecimal.valueOf(10*countUniqueSellers()));
         return totalPrice;
     }
+    
+    public int totalQuantity(){
+        int totalQuantity = 0;
+        for(CartItem cartItem:cartItems){
+            totalQuantity += cartItem.getQuantity();
+        }
+        return totalQuantity;
+    }
+    
     public int countUniqueSellers() {
         Set<Integer> uniqueSellers = new HashSet<>();
         for (CartItem cartItem:cartItems) {

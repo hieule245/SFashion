@@ -4,8 +4,11 @@ h2{
 }
 
 .accordion {
-    background-color: #eee;
-    color: #444;
+    background-color: #D19C97;
+    color: #fff;
+    border-radius: 10px;
+    margin:2px 0px;
+    box-sizing: content-box;
     cursor: pointer;
     padding: 18px;
     width: 100%;
@@ -17,7 +20,8 @@ h2{
 }
 
 .active, .accordion:hover {
-    background-color: #ccc;
+    background-color: #E7AFA9;
+    animation: ease-in 5px;
 }
 
 .panel {

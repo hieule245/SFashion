@@ -37,7 +37,7 @@
         <div class="panel">
             <p>Currently, Our Store only accepts payments through 3 options:
             <p>– Cash collection at home, also known as COD</p>
-            <p>– Direct payment: one of two store address: Quy Nhon, Binh Dinh or Da Nang.</p>
+            <p>– Direct payment: Add one of two store address: Quy Nhon, Binh Dinh or Da Nang.</p>
             <p>– Bank transfer.</p>               
         </div>
         <h3>

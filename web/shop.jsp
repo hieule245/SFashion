@@ -1,8 +1,3 @@
-<%-- 
-    Document   : shop
-    Created on : Aug 7, 2023, 9:28:38 AM
-    Author     : Raiku
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -74,29 +69,29 @@
                     <!-- Price Start -->
                     <div class="border-bottom mb-4 pb-4">
                         <h5 class="font-weight-semi-bold mb-4">Filter by price</h5>
-                        <form action="FilterByPriceController" method="GET">
+                        <form action="FilterByPriceController" method="POST">
                             <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                <input type="checkbox" class="custom-control-input" checked name="all" id="price-all" value="true">
+                                <input type="checkbox   " class="custom-control-input" name="all" id="price-all" ${allChecked ? 'checked' : ''}  value="true">
                                 <label class="custom-control-label" for="price-all">All Price</label>
                             </div>
-                            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                <input type="checkbox" class="custom-control-input" name="below100" id="price-1" value="true">
+                           <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                <input type="checkbox" class="custom-control-input" name="below100" id="price-1" ${below100Checked ? 'checked' : ''} value="true">
                                 <label class="custom-control-label" for="price-1">$0 - $100</label>
                             </div>
                             <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                <input type="checkbox" class="custom-control-input" name="below200" id="price-2" value="true">
+                                <input type="checkbox" class="custom-control-input" name="below200" id="price-2" ${below200Checked ? 'checked' : ''} value="true">
                                 <label class="custom-control-label" for="price-2">$100 - $200</label>
                             </div>
                             <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                <input type="checkbox" class="custom-control-input" name="below300" id="price-3" value="true">
+                                <input type="checkbox" class="custom-control-input" name="below300" id="price-3" ${below300Checked ? 'checked' : ''} value="true">
                                 <label class="custom-control-label" for="price-3">$200 - $300</label>
                             </div>
                             <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                <input type="checkbox" class="custom-control-input" name="below400" id="price-4" value="true">
+                                <input type="checkbox" class="custom-control-input" name="below400" id="price-4" ${below400Checked ? 'checked' : ''} value="true">
                                 <label class="custom-control-label" for="price-4">$300 - $400</label>
                             </div>
                             <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
-                                <input type="checkbox" class="custom-control-input" name="below500" id="price-5" value="true">
+                                <input type="checkbox" class="custom-control-input" name="below500" id="price-5" ${below500Checked ? 'checked' : ''} value="true">
                                 <label class="custom-control-label" for="price-5">$400 - $500</label>
                             </div>
                             <div class="custom-control custom-checkbox d-flex align-items-center justify-content-end">
@@ -115,7 +110,7 @@
                     <div class="row pb-3">
                         <div class="col-12 pb-1">
                             <div class="d-flex align-items-center justify-content-between mb-4">
-                                <form action="shopController" method="GET">
+                                <form action="shopController" method="POST">
                                     <div class="input-group">
                                         <input name="search" id="input-search" type="text" class="form-control" placeholder="Search for products">
                                         <button class="btn btn-outline-primary d-flex align-items-center" style="border: none; background: none;">
@@ -277,6 +272,16 @@
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
         <script src="js/addToCart.js"></script>
+        <script>
+$(document).ready(function() {
+  $(".product-item").click(function() {
+    var productId = $(this).data("productId");
+    var isChecked = $(this).find(".product-checkbox").attr("checked");
+
+    addToCart(productId, isChecked);
+  });
+});
+</script>
     </body>
 
 </html>

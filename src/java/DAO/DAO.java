@@ -23,7 +23,7 @@ import java.io.InputStream;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.Base64;
-import static java.util.Base64.getEncoder;
+//import static java.util.Base64.getEncoder;
 import java.util.Random;
 import java.sql.Timestamp;
 

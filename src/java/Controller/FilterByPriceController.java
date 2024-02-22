@@ -9,7 +9,9 @@ import dto.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,37 +32,52 @@ public class FilterByPriceController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String all = request.getParameter("all");
-        String below100 = request.getParameter("below100");
-        String below200 = request.getParameter("below200");
-        String below300 = request.getParameter("below300");
-        String below400 = request.getParameter("below400");
-        String below500 = request.getParameter("below500");
-        List<Product> listResult = new ArrayList<>();
-        if (all != null){
-            listResult = new DAO().getAllActiveProducts();
-        }else{
-            if (below100 != null){
-                listResult.addAll(new DAO().filterProductByPrice(0, 100));
-            }
-            if (below200 != null){
-                listResult.addAll(new DAO().filterProductByPrice(100, 200));
-            }
-            if (below300 != null){
-                listResult.addAll(new DAO().filterProductByPrice(200, 300));
-            }
-            if (below400 != null){
-                listResult.addAll(new DAO().filterProductByPrice(300, 400));
-            }
-            if (below500 != null){
-                listResult.addAll(new DAO().filterProductByPrice(400, 500));
-            }
+
+protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+    String all = request.getParameter("all");
+    String below100 = request.getParameter("below100");
+    String below200 = request.getParameter("below200");
+    String below300 = request.getParameter("below300");
+    String below400 = request.getParameter("below400");
+    String below500 = request.getParameter("below500");
+
+    Set<Product> listResult = new HashSet<>(); // Sử dụng Set để tránh trùng lặp
+    DAO dao = new DAO();
+
+    if (all != null) {
+        listResult.addAll(dao.getAllActiveProducts());
+    } else {
+        if (below100 != null) {
+            listResult.addAll(dao.filterProductByPrice(0, 100));
         }
-        request.setAttribute("listP", listResult);
-        request.getRequestDispatcher("shop.jsp").forward(request, response);
-    }
+        if (below200 != null) {
+            listResult.addAll(dao.filterProductByPrice(100, 200));
+        }
+        if (below300 != null) {
+            listResult.addAll(dao
+.filterProductByPrice(200, 300));
+}
+if (below400 != null) {
+listResult.addAll(dao.filterProductByPrice(300, 400));
+}
+if (below500 != null) {
+listResult.addAll(dao.filterProductByPrice(400, 500));
+}
+}
+
+
+// Đặt trạng thái hộp kiểm và danh sách sản phẩm vào request
+request.setAttribute("allChecked", all != null);
+request.setAttribute("below100Checked", below100 != null);
+request.setAttribute("below200Checked", below200 != null);
+request.setAttribute("below300Checked", below300 != null);
+request.setAttribute("below400Checked", below400 != null);
+request.setAttribute("below500Checked", below500 != null);
+request.setAttribute("listP", new ArrayList<>(listResult));
+
+request.getRequestDispatcher("shop.jsp").forward(request, response);
+}
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

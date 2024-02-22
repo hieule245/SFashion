@@ -1,121 +1,57 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package Controller;
 
 import DAO.DAO;
 import dto.Product;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
-/**
- *
- * @author Raiku
- */
 public class FilterByPriceController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String[] priceRanges = {"all", "below100", "below200", "below300", "below400", "below500"};
+        int[] lowerBounds = {0, 0, 100, 200, 300, 400};
+        int[] upperBounds = {0, 100, 200, 300, 400, 500};
 
-protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-    String all = request.getParameter("all");
-    String below100 = request.getParameter("below100");
-    String below200 = request.getParameter("below200");
-    String below300 = request.getParameter("below300");
-    String below400 = request.getParameter("below400");
-    String below500 = request.getParameter("below500");
+        Set<Product> listResult = new HashSet<>();
+        DAO dao = new DAO();
 
-    Set<Product> listResult = new HashSet<>(); // Sử dụng Set để tránh trùng lặp
-    DAO dao = new DAO();
-
-    if (all != null) {
-        listResult.addAll(dao.getAllActiveProducts());
-    } else {
-        if (below100 != null) {
-            listResult.addAll(dao.filterProductByPrice(0, 100));
+        for (int i = 0; i < priceRanges.length; i++) {
+            String priceRange = request.getParameter(priceRanges[i]);
+            if (priceRange != null) {
+                if (i == 0) {
+                    listResult.addAll(dao.getAllActiveProducts());
+                } else {
+                    listResult.addAll(dao.filterProductByPrice(lowerBounds[i], upperBounds[i]));
+                }
+                request.setAttribute(priceRanges[i] + "Checked", true);
+            }
         }
-        if (below200 != null) {
-            listResult.addAll(dao.filterProductByPrice(100, 200));
-        }
-        if (below300 != null) {
-            listResult.addAll(dao
-.filterProductByPrice(200, 300));
-}
-if (below400 != null) {
-listResult.addAll(dao.filterProductByPrice(300, 400));
-}
-if (below500 != null) {
-listResult.addAll(dao.filterProductByPrice(400, 500));
-}
-}
 
+        request.setAttribute("listP", new ArrayList<>(listResult));
+        request.getRequestDispatcher("shop.jsp").forward(request, response);
+    }
 
-// Đặt trạng thái hộp kiểm và danh sách sản phẩm vào request
-request.setAttribute("allChecked", all != null);
-request.setAttribute("below100Checked", below100 != null);
-request.setAttribute("below200Checked", below200 != null);
-request.setAttribute("below300Checked", below300 != null);
-request.setAttribute("below400Checked", below400 != null);
-request.setAttribute("below500Checked", below500 != null);
-request.setAttribute("listP", new ArrayList<>(listResult));
-
-request.getRequestDispatcher("shop.jsp").forward(request, response);
-}
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
-
+    }
 }

@@ -22,7 +22,7 @@
         <button class="accordion">I have not been confirmed after placing the order</button>
         <div class="panel">
             <p>After placing an order, please check your mail, we will send you an email to confirm that you have ordered the item.</p>
-            <p>Please take the initiative to call us via phone number: <b>+84(0) 0123 456 789</b> or contact us via <a href="https://www.facebook.com/hello.trungkien2711/" ><b>Facebook</b></a></p>
+            <p>Please take the initiative to call us via phone number: <b>+84(0) 0123 456 789</b> or contact us via <a href="https://www.facebook.com/thuthuy1911.vn" ><b>Facebook</b></a></p>
         </div>
 
         <button class="accordion">How to order online in this web?</button>
@@ -37,7 +37,7 @@
         <div class="panel">
             <p>Currently, Our Store only accepts payments through 3 options:
             <p>– Cash collection at home, also known as COD</p>
-            <p>– Direct payment: At one of two store address: Quy Nhon, Binh Dinh or Pleiku, Gia Lai.</p>
+            <p>– Direct payment: At one of two store address: Quy Nhon, Binh Dinh or Da Nang.</p>
             <p>– Bank transfer.</p>               
         </div>
         <h3>

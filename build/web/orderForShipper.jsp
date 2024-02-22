@@ -79,6 +79,9 @@
                             <c:if test="${item.getPaymentMethod() == '1'}">
                                 <td class="align-middle admin-role">Pay in cash</td>
                             </c:if>
+                                <c:if test="${item.getPaymentMethod() == '2'}">
+                                <td class="align-middle admin-role">Pay in EWallet</td>
+                            </c:if>
                             <!--///////////////-->
                             <!--Status-->
                             <c:if test="${item.getStatus() == '3'}">

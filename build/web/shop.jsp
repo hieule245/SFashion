@@ -57,9 +57,9 @@
             <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
                 <h1 class="font-weight-semi-bold text-uppercase mb-3">Our Shop</h1>
                 <div class="d-inline-flex">
-                    <p class="m-0"><a href="">Home</a></p>
-                    <p class="m-0 px-2">-</p>
-                    <p class="m-0">Shop</p>
+                    <p class="m-0"><a href="index.jsp">Home</a></p>
+                    <p class="m-0 px-2"> - </p>
+                    <p class="m-0 active"><a href="#"><strong>Shop</strong></a></p>
                 </div>
             </div>
         </div>
@@ -140,7 +140,7 @@
                             </div>
                         </div>
 
-                        <c:forEach items="${listP}" var="o"> 
+                        <c:forEach items="${listP}" var="o">
                             <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
                                 <div class="card product-item border-0 mb-4">
                                     <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
@@ -160,8 +160,8 @@
                                         <a href="addtoCart?pid=${o.productId}" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                                     </div>
                                 </div>
-                            </div> 
-                        </c:forEach> 
+                            </div>
+                        </c:forEach>
 
 
 

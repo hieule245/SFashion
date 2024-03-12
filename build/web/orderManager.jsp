@@ -53,19 +53,19 @@
                     <tr>
                         <th>ID</th>
                         <th>Seller</th>
-                        <c:if test="${sessionScope.user.getRole() == '3'}">
+                            <c:if test="${sessionScope.user.getRole() == '3'}">
                             <th>Buyer</th>
                             <th>Receipt Address</th>
                             <th>Delivery Address</th>
-                        </c:if>
+                            </c:if>
                         <th>Order Date</th>
                         <th>Total Amount</th>
                         <th>Payment Method</th>
                         <th>Status</th>
                         <th>Detail</th>
-                        <c:if test="${sessionScope.user.getRole() == '3'}">
+                            <c:if test="${sessionScope.user.getRole() == '3'}">
                             <th>Action</th>
-                        </c:if>
+                            </c:if>
                     </tr>
                 </thead>
                 <tbody id="table-body">
@@ -82,7 +82,10 @@
                             <td>${item.getTotalAmount()}</td>
                             <!--Payment Method-->
                             <c:if test="${item.getPaymentMethod() == '1'}">
-                                <td class="align-middle">Pay in cash</td>
+                                <td class="align-middle">Pay in Cash</td>
+                            </c:if>
+                            <c:if test="${item.getPaymentMethod() == '2'}">
+                                <td class="align-middle">E-Wallet</td>
                             </c:if>
                             <!--///////////////-->
                             <!--Status-->
@@ -99,13 +102,13 @@
                                 <td class="align-middle">Finished</td>
                             </c:if>
                             <!--///////////////-->
-                            <input type="hidden" name="order_id" value="${item.orderId}">
-                            <td><a href="OrderDetail?order_id=${item.orderId}" class="btn btn-primary" name="submit" id="view" value="view">View Detail</a></td>
-                            <c:if test="${sessionScope.user.getRole() == '3' && item.getStatus() == '2'}">
-                            <td><button name="submit" id="view" value="accept">Accept</button</td>
-                            </c:if>
-                        </tr>
-                    </c:forEach> 
+                    <input type="hidden" name="order_id" value="${item.orderId}">
+                    <td><a href="OrderDetail?order_id=${item.orderId}" class="btn btn-primary" name="submit" id="view" value="view">View Detail</a></td>
+                    <c:if test="${sessionScope.user.getRole() == '3' && item.getStatus() == '2'}">
+                        <td><button name="submit" id="view" value="accept">Accept</button</td>
+                    </c:if>
+                    </tr>
+                </c:forEach> 
                 </tbody>
             </table>
         </form>

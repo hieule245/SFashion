@@ -41,17 +41,17 @@ public class OrderManagerController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        DAO dao = new DAO();
-        User user = (User)session.getAttribute("user");
-        List<OrderTable> orderTables = new ArrayList<>();
-        if("2".equals(user.getRole())){
-            orderTables = dao.getOrderTableByCustomerID(user.getUserId());
-        }else if("3".equals(user.getRole())){
-            orderTables = dao.getAllOrderTableForShipper();
-        }
-        session.setAttribute("orderList", orderTables);
-        request.getRequestDispatcher("orderManager.jsp").forward(request, response);
+            HttpSession session = request.getSession();
+            DAO dao = new DAO();
+            User user = (User)session.getAttribute("user");
+            List<OrderTable> orderTables = new ArrayList<>();
+            if("2".equals(user.getRole())){
+                orderTables = dao.getOrderTableByCustomerID(user.getUserId());
+            }else if("3".equals(user.getRole())){
+                orderTables = dao.getAllOrderTableForShipper();
+            }
+            session.setAttribute("orderList", orderTables);
+            request.getRequestDispatcher("orderManager.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -84,6 +84,7 @@ public class OrderManagerController extends HttpServlet {
         DAO dao = new DAO();
         String submit = request.getParameter("submit");
         int order_id;
+        
         switch (submit) {
             case "order":
                 ShoppingCart shoppingCart = (ShoppingCart)session.getAttribute("ShoppingCart");
@@ -95,6 +96,8 @@ public class OrderManagerController extends HttpServlet {
                 String ship_address = request.getParameter("ship_address");
                 String discount_code = request.getParameter("discount_code");
                 String payment_method = request.getParameter("payment_method");
+                Integer payment = Integer.valueOf(payment_method);
+                String total_amount_raw = request.getParameter("total_amount");
                 if (ship_mail == null) {
                     // Handle the case when "action" is null, e.g., redirect to an error page or return an error response
                     // You can also throw an exception or log an error message
@@ -102,6 +105,8 @@ public class OrderManagerController extends HttpServlet {
                     response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Missing parameter");
                     return;
                 }
+                
+                if(payment == 1){
                 List<CartItem> CartItemsList = shoppingCart.getCartItems();
                 Timestamp orderDate = new Timestamp(System.currentTimeMillis());
                 while(!CartItemsList.isEmpty()){
@@ -150,6 +155,19 @@ public class OrderManagerController extends HttpServlet {
                 } 
                 dao.deleteCartItemByCartId(shoppingCart.getCartId());
                 processRequest(request, response);
+                }else{
+                    total_amount_raw = total_amount_raw.replace(".", "");
+                    BigDecimal total_amount_raw2 = new BigDecimal(total_amount_raw);
+                    Timestamp orderDate = new Timestamp(System.currentTimeMillis());
+                    OrderTable orderTable = new OrderTable(dao.randomOrderID("order_table"),ship_name, ship_mail,
+                                                           ship_phone, ship_address, orderDate,
+                                                    BigDecimal.valueOf(10), dao.getDiscountByCode(discount_code),
+                                                    payment_method, "1", customer);
+                    session.setAttribute("order", orderTable);
+                    session.setAttribute("total_amount", total_amount_raw2.add(BigDecimal.valueOf(10)));
+                    response.sendRedirect("vnpay_pay.jsp?total_amount="+total_amount_raw2+"00");
+                }
+                
                 break;
             case "accept":
                 order_id = Integer.parseInt(request.getParameter("order_id"));

@@ -5,19 +5,19 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-<%
-// Check for success message and display alert
-    String Message =(String) session.getAttribute("Message");
-    if (Message != null) {
-    out.println("<script>");
-    out.println("alert('" + Message + "');");
-    out.println("</script>");
-    session.removeAttribute("Message");
-    }
-    DAO dao = new DAO();
-    List<Category> listC = dao.getAllCategories();
-    session.setAttribute("listCC", listC);
-%>
+    <%
+    // Check for success message and display alert
+        String Message = (String) session.getAttribute("Message");
+        if (Message != null) {
+            out.println("<script>");
+            out.println("alert('" + Message + "');");
+            out.println("</script>");
+            session.removeAttribute("Message");
+        }
+        DAO dao = new DAO();
+        List<Category> listC = dao.getAllCategories();
+        session.setAttribute("listCC", listC);
+    %>
     <head>
         <meta charset="utf-8">
         <title>Fashion web | Buy and sell online </title>
@@ -83,7 +83,7 @@
             </div>
             <div class="row align-items-center py-3 px-xl-5">
                 <div class="col-lg-3 d-none d-lg-block">
-                    <a href="" class="text-decoration-none">
+                    <a href="index.jsp" class="text-decoration-none">
                         <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">S</span>Fashion</h1>
                     </a>
                 </div>
@@ -101,14 +101,14 @@
                     </form>
                 </div>
                 <c:if test="${sessionScope.user != null && sessionScope.user.getRole()=='2'}">
-                <div class="col-lg-1 col-2 text-right">
-                    <a href="./cart.jsp" class="btn border">
-                        <i class="fas fa-shopping-cart text-primary"></i>
-                    </a>
-                </div>
+                    <div class="col-lg-1 col-2 text-right">
+                        <a href="./cart.jsp" class="btn border">
+                                <i class="fas fa-shopping-cart text-primary"></i> <span class="badge badge-light">${sessionScope.ShoppingCart.totalQuantity()}</span>
+                        </a>
+                    </div>
                 </c:if>
             </div>
-            
+
         </div>
         <!-- Topbar End -->
 
@@ -136,22 +136,22 @@
                             -->
                             <c:if test="${sessionScope.user.getRole() == '2' || sessionScope.user == null}">
                                 <div class="scrollable-list">
-                            <ul class="navbar-nav w-100 overflow-hidden" style="height: 410px">
-                                <c:forEach items="${sessionScope.listCC}" var="o">
-                                    <li class="nav-item">
-                                        <a href="CategoryController?cid=${o.categoryId}" class="nav-link">${o.name}</a>
-                                    </li>
-                                </c:forEach>
-                            </ul>
-                                    </div>
+                                    <ul class="navbar-nav w-100 overflow-hidden" style="height: 410px">
+                                        <c:forEach items="${sessionScope.listCC}" var="o">
+                                            <li class="nav-item">
+                                                <a href="CategoryController?cid=${o.categoryId}" class="nav-link">${o.name}</a>
+                                            </li>
+                                        </c:forEach>
+                                    </ul>
+                                </div>
                             </c:if>
                         </div>
                     </nav>
                 </div>
                 <div class="col-lg-9">
                     <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
-                        <a href="" class="text-decoration-none d-block d-lg-none">
-                            <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Commerce</h1>
+                        <a href="index.jsp" class="text-decoration-none d-block d-lg-none">
+                            <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">S</span>Fashion</h1>
                         </a>
                         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                             <span class="navbar-toggler-icon"></span>
@@ -159,13 +159,13 @@
                         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                             <div class="navbar-nav mr-auto py-0">
                                 <c:if test="${sessionScope.user.getRole() == '2' || sessionScope.user == null}">
-                                <a href="index.jsp" class="nav-item nav-link active">Home</a>
-                                <a href="shopController" class="nav-item nav-link">Shop</a>
+                                    <a href="index.jsp" class="nav-item nav-link active">Home</a>
+                                    <a href="shopController" class="nav-item nav-link">Shop</a>
                                 </c:if>
                                 <c:if test="${sessionScope.user != null}">
                                     <c:if test="${sessionScope.user.getRole() == '2'}">
                                         <a href="cart.jsp" class="nav-item nav-link">Shopping Cart</a>
-                                    <a href="./productManagerController" class="nav-item nav-link">Product Manager</a>
+                                        <a href="./productManagerController" class="nav-item nav-link">Product Manager</a>
                                     </c:if>
                                     <c:if test="${sessionScope.user.getRole() == '2' || sessionScope.user.getRole() == '3'}">
                                         <a href="./OrderManagerController" class="nav-item nav-link">Order Manager</a>
@@ -180,46 +180,46 @@
                                     <a href="Register.jsp" class="nav-item nav-link">Sign up</a>
                                 </div>
                             </c:if>
-                            
+
                             <c:if test="${sessionScope.user.getRole() == '2'}">
-                                    <a href="productManagerController" class="nav-item nav-link">Post For Sale</a>
+                                <a href="productManagerController" class="nav-item nav-link">Post For Sale</a>
                             </c:if>
-                                    
+
                             <c:if test="${sessionScope.user.getRole() == '1'}">
                                 <div class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Manager</a>
-                                        <div class="dropdown-menu rounded-0 m-0">
+                                    <div class="dropdown-menu rounded-0 m-0">
                                         <a href="AccountManagerController" class="dropdown-item">Accounts</a>
                                         <a href="CategoryManagerController" class="dropdown-item">Categories</a>
                                         <a href="productManagerController" class="dropdown-item">Products</a>
                                         <a href="DiscountManagerController" class="dropdown-item">Discounts</a>
-                                        </div>
                                     </div>
-                                </c:if>
+                                </div>
+                            </c:if>
 
                             <c:if test="${sessionScope.user != null}">
-                        <div class="nav-item dropdown">
-                            <c:if test="${sessionScope.user.getRole() == '2'|| sessionScope.user.getRole() == '3'}">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">${sessionScope.user.getName()}</a>
-                                <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="profileController" class="dropdown-item">Profile</a>
-                                    <c:if test="${sessionScope.user.getRole() == '2'}">
-                                        <a href="OrderForSellerController" class="dropdown-item">Shop's Orders</a>
-                                    </c:if>
-                                    <c:if test="${sessionScope.user.getRole() == '3'}">
-                                        <a href="OrderForShipperController" class="dropdown-item">Shipper's Orders</a>
-                                    </c:if>
-                            </c:if>
-                            <c:if test="${sessionScope.user.getRole() == '1'}">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">${sessionScope.user.getName()}</a>
-                                <div class="dropdown-menu rounded-0 m-0">
-                            </c:if>
-                                    <a href="changePassword.jsp" class="dropdown-item">Change password</a>
-                                    <a href="logout" class="dropdown-item">Logout</a>
-                                </div>
+                                <div class="nav-item dropdown">
+                                    <c:if test="${sessionScope.user.getRole() == '2'|| sessionScope.user.getRole() == '3'}">
+                                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">${sessionScope.user.getName()}</a>
+                                        <div class="dropdown-menu rounded-0 m-0">
+                                            <a href="profileController" class="dropdown-item">Profile</a>
+                                            <c:if test="${sessionScope.user.getRole() == '2'}">
+                                                <a href="OrderForSellerController" class="dropdown-item">Shop's Orders</a>
+                                            </c:if>
+                                            <c:if test="${sessionScope.user.getRole() == '3'}">
+                                                <a href="OrderForShipperController" class="dropdown-item">Shipper's Orders</a>
+                                            </c:if>
+                                        </c:if>
+                                        <c:if test="${sessionScope.user.getRole() == '1'}">
+                                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">${sessionScope.user.getName()}</a>
+                                            <div class="dropdown-menu rounded-0 m-0">
+                                            </c:if>
+                                            <a href="changePassword.jsp" class="dropdown-item">Change password</a>
+                                            <a href="logout" class="dropdown-item">Logout</a>
+                                        </div>
+                                    </div>
+                                </c:if> 
                             </div>
-                            </c:if> 
-                        </div>
                     </nav>
                     <div id="header-carousel" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">

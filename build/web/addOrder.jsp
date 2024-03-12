@@ -44,7 +44,7 @@
                 </div> 
                 <div class="panel-body">
 
-                    <form action="OrderManagerController" method="POST">
+                    <form action="OrderManagerController?total_amount=<%=total_amount%>" method="POST">
 
                         <div class="form-group">
                             <label for="name" class="col-sm-3 control-label">Ship Name</label>

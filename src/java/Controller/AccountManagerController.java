@@ -55,7 +55,7 @@ public class AccountManagerController extends HttpServlet {
         session.setAttribute("search", search);
         request.setAttribute("endPage", endPage);
         request.setAttribute("tag", index);
-        request.getRequestDispatcher("accountManager.jsp").forward(request, response);
+        request.getRequestDispatcher("AdminUIUserAccounts.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

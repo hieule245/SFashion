@@ -33,8 +33,8 @@ public class DashboardController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         User admin = (User)session.getAttribute("user");
-        request.setAttribute("admin", admin);
-        request.getRequestDispatcher("dashboard.jsp").forward(request, response);
+        session.setAttribute("admin", admin);
+        request.getRequestDispatcher("AdminUIDashboard.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

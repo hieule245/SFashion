@@ -82,7 +82,10 @@
                             <td>${item.getTotalAmount()}</td>
                             <!--Payment Method-->
                             <c:if test="${item.getPaymentMethod() == '1'}">
-                                <td class="align-middle">Pay in cash</td>
+                                <td class="align-middle">Pay in Cash</td>
+                            </c:if>
+                            <c:if test="${item.getPaymentMethod() == '2'}">
+                                <td class="align-middle">E-Wallet</td>
                             </c:if>
                             <!--///////////////-->
                             <!--Status-->

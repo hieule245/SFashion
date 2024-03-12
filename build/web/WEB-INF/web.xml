@@ -77,6 +77,46 @@
         <servlet-class>Controller.AddNewProductController</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>Config</servlet-name>
+        <servlet-class>VNPay.Config</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ajaxServlet</servlet-name>
+        <servlet-class>VNPay.ajaxServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>vnpayQuery</servlet-name>
+        <servlet-class>VNPay.vnpayQuery</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>vnpayRefund</servlet-name>
+        <servlet-class>VNPay.vnpayRefund</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PaymentController</servlet-name>
+        <servlet-class>VNPay.PaymentController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Config</servlet-name>
+        <url-pattern>/Config</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PaymentController</servlet-name>
+        <url-pattern>/paymentController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ajaxServlet</servlet-name>
+        <url-pattern>/ajaxServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>vnpayQuery</servlet-name>
+        <url-pattern>/vnpayQuery</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>vnpayRefund</servlet-name>
+        <url-pattern>/vnpayRefund</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>addProduct</servlet-name>
         <servlet-class>Controller.addProduct</servlet-class>
         <multipart-config>

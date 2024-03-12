@@ -1,8 +1,4 @@
-<%-- 
-    Document   : detail
-    Created on : Aug 7, 2023, 9:30:29 AM
-    Author     : Raiku
---%>
+
 
 <%@page import="dto.Image"%>
 <%@page import="java.util.List"%>

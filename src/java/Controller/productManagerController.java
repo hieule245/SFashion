@@ -73,7 +73,7 @@ public class productManagerController extends HttpServlet {
         session.setAttribute("listP", products);
         request.setAttribute("endPage", endPage);
         request.setAttribute("tag", index);
-        request.getRequestDispatcher("productManager.jsp").forward(request, response);
+        request.getRequestDispatcher("AdminUIProductsManage.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

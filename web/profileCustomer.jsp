@@ -32,7 +32,15 @@
                 <div class="panel-heading"> 
                     <h3 class="panel-title">Profile</h3> 
                 </div>
-                <div class="panel-body">
+                <div>
+                    <div class="col-md-4 border-right">
+                        <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                            <span class="font-weight-bold">${sessionScope.user.getUsername()}</span>
+                            <span class="text-black-50">${sessionScope.user.getEmail()}</span><span> </span></div>
+                    </div>
+                </div>
+                
+                <div class="panel-body col-md-8">
                     <form action="profileController" method="POST" class="form-horizontal" role="form">
                         <div class="form-group">
                             <label for="name" class="col-sm-3 control-label">Username</label>
@@ -64,14 +72,14 @@
                                 <input type="text" class="form-control" name="address" id="address" placeholder="${sessionScope.user.getAddress()}" ${statusSave}>
                             </div>
                         </div>
-                            
+
                         <hr>
                         <div class="form-group">
                             <c:if test="${sessionScope.changePassword==false}">
                                 <div class="col-sm-offset-3 col-sm-9">
-                                <p class="text-danger" style="font-size: 10px;">
-                                    ${message}
-                                </p>
+                                    <p class="text-danger" style="font-size: 10px;">
+                                        ${message}
+                                    </p>
                                 </div>
                             </c:if>
                             <div class="col-sm-offset-3 col-sm-9">
@@ -84,8 +92,8 @@
                 <div id="status"></div>
             </section>
         </div> 
+
         <%@include file="footer.jsp" %>
         <script src="js/addProduct.js"></script>
     </body>
 </html>
-

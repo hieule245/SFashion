@@ -38,7 +38,7 @@
             </a>
         </div>
         <div class="col-lg-5 col-5 text-left">
-            <form action="SearchController" method="GET">
+            <form action="shopController" method="GET">
                 <div class="input-group">
                     <input name="search" id="input-search" type="text" class="form-control" placeholder="Search for products">
                     <button class="btn btn-outline-primary d-flex align-items-center" style="border: none; background: none;">

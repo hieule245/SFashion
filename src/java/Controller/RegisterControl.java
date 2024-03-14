@@ -113,7 +113,11 @@ public class RegisterControl extends HttpServlet {
                     session.setAttribute("role", role);
                     request.setAttribute("message", "Password was not match!");
                     request.getRequestDispatcher("Register.jsp").forward(request, response);
-                }else{
+                }else if(!phone.matches("0\\d+") || phone.length() != 10){
+                    request.setAttribute("message", "Phone number is invalid!");
+                    request.getRequestDispatcher("Register.jsp").forward(request, response);
+                }
+                else {
                     String subject = "Verify your Email";
                     String content = "<h2>Thanks for registering for an account on SFashion! Before we get started, we just need to confirm that this is you.</h2>\r\n"
                             + "<h2>Your Verification Code: "+code+" </h2>\r\n";

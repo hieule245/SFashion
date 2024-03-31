@@ -33,6 +33,10 @@ public class OrderTable {
     
     public OrderTable() {
     }
+    
+    public OrderTable(int orderId) {
+        this.orderId = orderId;
+    }
 
     public OrderTable(int orderId, String shipName, String shipMail, String shipPhone, String shipAddress, Timestamp orderDate, BigDecimal shipFee, Discount discount, BigDecimal totalAmount, String paymentMethod, String status, User customer, User seller, User shipper, List<OrderItem> orderItems) {
         this.orderId = orderId;

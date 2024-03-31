@@ -44,14 +44,16 @@ public class OrderManagerController extends HttpServlet {
             HttpSession session = request.getSession();
             DAO dao = new DAO();
             User user = (User)session.getAttribute("user");
-            List<OrderTable> orderTables = new ArrayList<>();
+            List<OrderTable> orderTables = new ArrayList<OrderTable>();
             if("2".equals(user.getRole())){
                 orderTables = dao.getOrderTableByCustomerID(user.getUserId());
             }else if("3".equals(user.getRole())){
                 orderTables = dao.getAllOrderTableForShipper();
+            }else if("1".equals(user.getRole())){
+                orderTables = dao.getAllOrderTableForAdmin();
             }
             session.setAttribute("orderList", orderTables);
-            request.getRequestDispatcher("orderManager.jsp").forward(request, response);
+            request.getRequestDispatcher("AdminUITransactionManage.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

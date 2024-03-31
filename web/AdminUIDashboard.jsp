@@ -46,9 +46,9 @@
               <div class='fs-4 fw-bold text-primary-me pb-2'>Products</div>
               <span class='fs-smaller p-3 border-top border-success'><span class='text-success'>1 UP</span> last 30 days</span>
             </div>
-            <div class="col-2 shadow-lg rounded d-flex flex-column align-items-center">
+              <div id="gotoTransactions" class="col-2 shadow-lg rounded d-flex flex-column align-items-center">
               <i class="bi bi-currency-dollar text-primary-me icon-tag fw-bolder"></i>
-              <div class='fw-bolder fs-3'>${admin.Revenue()}</div>
+              <div class='fw-bolder fs-3'>${admin.countSoldProduct()}</div>
               <div class='fs-4 fw-bold text-primary-me pb-2'>Transaction</div>
               <span class='fs-smaller p-3 border-top border-success'><span class='text-success'>1 UP</span> last 30 days</span>
             </div>
@@ -86,6 +86,7 @@
     // Get the div element by its id
     var gotoAccountPage = document.getElementById('gotoAccounts');
     var gotoProductPage = document.getElementById('gotoProducts');
+    var gotoTransactionPage = document.getElementById('gotoTransactions');
   
     // Attach a click event listener to the div
     gotoAccountPage.addEventListener('click', function() {
@@ -95,6 +96,10 @@
     gotoProductPage.addEventListener('click', function() {
       // Change the window location to the desired URL
       window.location.href = 'productManagerController';
+    });
+    gotoTransactionPage.addEventListener('click', function() {
+      // Change the window location to the desired URL
+      window.location.href = 'OrderManagerForAdmin';
     });
   </script>
 </body>

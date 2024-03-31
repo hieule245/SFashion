@@ -1154,7 +1154,7 @@ public class DAO extends DBconnect {
         DAO dao = new DAO();
         List<OrderTable> orderTables = new ArrayList<>();
         String queryString = "SELECT * " +
-                    "FROM [platform_online].[dbo].[order_table] " +
+                    "FROM [platform_online].[dbo].[order_table] "+
                     "WHERE status = '2'";
         try {
             PreparedStatement ps = connection.prepareStatement(queryString);
@@ -1180,6 +1180,54 @@ public class DAO extends DBconnect {
         }
         return orderTables;
     }
+    
+    
+    public List<OrderTable> getAllOrderTableForAdmin() {
+        DAO dao = new DAO();
+        List<OrderTable> orderTables = new ArrayList<>();
+        String queryString = "SELECT * " +
+                    "FROM [platform_online].[dbo].[order_table] ";
+        try {
+            PreparedStatement ps = connection.prepareStatement(queryString);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                orderTables.add(new OrderTable(rs.getInt(1),
+                        rs.getString(2), 
+                        rs.getString(3), 
+                        rs.getString(4), 
+                        rs.getString(5),
+                        rs.getTimestamp(6), 
+                        rs.getBigDecimal(7).setScale(1, BigDecimal.ROUND_DOWN), 
+                        dao.getDiscountByCode(rs.getString(8)), 
+                        rs.getBigDecimal(9).setScale(1, BigDecimal.ROUND_DOWN), 
+                        rs.getString(10), 
+                        rs.getString(11), 
+                        getUserByID(rs.getInt(12)), 
+                        getUserByID(rs.getInt(13)),
+                        dao.getOrderItemsByOrderId(rs.getInt(1))
+                ));
+            }
+        } catch (Exception e) {
+        }
+        return orderTables;
+    }
+    
+    public List<OrderTable> getCountOrderTableForAdmin() {
+        DAO dao = new DAO();
+        List<OrderTable> orderTables = new ArrayList<>();
+        String queryString = "SELECT [order_id] " +
+                    "FROM [platform_online].[dbo].[order_table] ";
+        try {
+            PreparedStatement ps = connection.prepareStatement(queryString);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                orderTables.add(new OrderTable(rs.getInt(1)));
+            }
+        } catch (Exception e) {
+        }
+        return orderTables;
+    }
+    
     public List<OrderTable> getFinishedOrderTable() {
         DAO dao = new DAO();
         List<OrderTable> orderTables = new ArrayList<>();

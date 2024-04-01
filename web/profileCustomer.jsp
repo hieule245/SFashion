@@ -41,7 +41,7 @@
                 </div>
                 
                 <div class="panel-body col-md-8">
-                    <form action="profileController" method="POST" class="form-horizontal" role="form">
+                    <form action="profileController" method="POST" class="form-horizontal" role="form" accept-charset="UTF-8">
                         <div class="form-group">
                             <label for="name" class="col-sm-3 control-label">Username</label>
                             <div class="col-sm-6">

@@ -54,7 +54,7 @@
         <%@include file="header.jsp" %>
         <!-- Page Header Start -->
         <div class="container-fluid bg-secondary mb-5">
-            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="padding: 50px">
                 <h1 class="font-weight-semi-bold text-uppercase mb-3">Shopping Cart</h1>
                 <div class="d-inline-flex">
                     <p class="m-0"><a href="">Home</a></p>
@@ -138,7 +138,7 @@
                                 </div>
                                 <div class="d-flex justify-content-between">
                                     <h6 class="font-weight-medium">Orders in Cart</h6>
-                                    <h6 id="shipFees" class="font-weight-medium">${sessionScope.ShoppingCart.countUniqueSellers()}</h6>
+                                    <h6 id="shipFees" class="font-weight-medium">${sessionScope.ShoppingCart.totalQuantity()}</h6>
                                 </div>
                                 <div class="d-flex justify-content-between">
                                     <h6 class="font-weight-medium">Discount</h6>

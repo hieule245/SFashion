@@ -138,7 +138,7 @@
                                 </div>
                                 <div class="d-flex justify-content-between">
                                     <h6 class="font-weight-medium">Orders in Cart</h6>
-                                    <h6 id="shipFees" class="font-weight-medium">${sessionScope.ShoppingCart.countUniqueSellers()}</h6>
+                                    <h6 id="shipFees" class="font-weight-medium">${sessionScope.ShoppingCart.totalQuantity()}</h6>
                                 </div>
                                 <div class="d-flex justify-content-between">
                                     <h6 class="font-weight-medium">Discount</h6>

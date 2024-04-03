@@ -3,10 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/OnSchool/FALL_2023_FPT/swp-sofDevPro/Project/Back-end/SFashion/src/java/Controller/OrderManagerForAdmin.java</file>
-            <file>file:/E:/OnSchool/FALL_2023_FPT/swp-sofDevPro/Project/Back-end/SFashion/web/AdminUIDashboard.jsp</file>
-            <file>file:/E:/OnSchool/FALL_2023_FPT/swp-sofDevPro/Project/Back-end/SFashion/web/AdminUITransactionManage.jsp</file>
-            <file>file:/E:/OnSchool/FALL_2023_FPT/swp-sofDevPro/Project/Back-end/SFashion/src/java/Controller/DashboardController.java</file>
+            <file>file:/C:/Users/Alpha/Documents/NetBeansProjects/SFashion/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/Alpha/Documents/NetBeansProjects/SFashion/web/header.jsp</file>
+            <file>file:/C:/Users/Alpha/Documents/NetBeansProjects/SFashion/src/java/Controller/DiscountManagerController.java</file>
+            <file>file:/C:/Users/Alpha/Documents/NetBeansProjects/SFashion/web/DetailProduct.jsp</file>
+            <file>file:/C:/Users/Alpha/Documents/NetBeansProjects/SFashion/web/css/style.css</file>
+            <file>file:/C:/Users/Alpha/Documents/NetBeansProjects/SFashion/src/java/Controller/OrderManagerController.java</file>
+            <file>file:/C:/Users/Alpha/Documents/NetBeansProjects/SFashion/src/java/Connect/DBconnect.java</file>
+            <file>file:/C:/Users/Alpha/Documents/NetBeansProjects/SFashion/web/cart.jsp</file>
+            <file>file:/C:/Users/Alpha/Documents/NetBeansProjects/SFashion/web/AdminUIProductsManage.jsp</file>
+            <file>file:/C:/Users/Alpha/Documents/NetBeansProjects/SFashion/src/java/Controller/productManagerController.java</file>
+            <file>file:/C:/Users/Alpha/Documents/NetBeansProjects/SFashion/web/AdminUIDashboard.jsp</file>
         </group>
     </open-files>
 </project-private>

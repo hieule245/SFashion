@@ -26,7 +26,7 @@
         <style>
             .gallery-wrap .img-big-wrap img {
                 height: 450px;
-                width: auto;
+                width: 100%;
                 display: inline-block;
                 cursor: zoom-in;
             }
@@ -70,8 +70,8 @@
                             <div class="row">
                                 <aside class="col-sm-5 border-right">
                                     <article class="gallery-wrap"> 
-                                        <div class="img-big-wrap">
-                                            <img src="data:image/jpeg;base64,${detail.images[0].getImg()}" alt="Image" />
+                                        <div class="img-big-wrap" >
+                                            <img  src="data:image/jpeg;base64,${detail.images[0].getImg()}" alt="Image" />
                                         </div> <!-- slider-product.// -->
                                         <div class="img-small-wrap">
                                         </div> <!-- slider-nav.// -->

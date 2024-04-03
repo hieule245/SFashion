@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <!-- Topbar Start -->
 <div class="container-fluid">
     <div class="row bg-secondary py-2 px-xl-5">
@@ -53,7 +54,7 @@
         <c:if test="${sessionScope.user != null && sessionScope.user.getRole()=='2'}">
             <div class="col-lg-1 col-2 text-right">
                 <a href="./cart.jsp" class="btn border">
-                    <!-- fix này -->
+                    <!-- fix nÃ y -->
                     <i class="fas fa-shopping-cart text-primary"></i> <span class="badge badge-light">${sessionScope.ShoppingCart.totalQuantity()}</span>
                 </a>
             </div>

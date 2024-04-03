@@ -10,7 +10,7 @@
 <%@page import="java.util.List"%>
 <%@page import="DAO.DAO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <%
@@ -57,7 +57,7 @@
             <div class="d-flex flex-column align-items-center justify-content-center" style="padding: 50px">
                 <h1 class="font-weight-semi-bold text-uppercase mb-3">Shopping Cart</h1>
                 <div class="d-inline-flex">
-                    <p class="m-0"><a href="">Home</a></p>
+                    <p class="m-0"><a href="index.jsp">Home</a></p>
                     <p class="m-0 px-2">-</p>
                     <p class="m-0">Shopping Cart</p>
                 </div>

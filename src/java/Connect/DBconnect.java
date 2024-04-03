@@ -17,7 +17,7 @@ public class DBconnect {
 
     public DBconnect() {
         try {
-            String url="jdbc:sqlserver://localhost:1433;databaseName=platform_online";
+            String url="jdbc:sqlserver://localhost:1433;databaseName=platform_online2";
             String username="sa";
             String password="haidang123";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");              

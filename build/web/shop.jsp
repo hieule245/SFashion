@@ -74,36 +74,36 @@
                     <!-- Price Start -->
                     <div class="border-bottom mb-4 pb-4">
                         <h5 class="font-weight-semi-bold mb-4">Filter by price</h5>
-                        <form action="FilterByPriceController" method="GET">
-                            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                <input type="checkbox" class="custom-control-input" checked name="all" id="price-all" value="true">
-                                <label class="custom-control-label" for="price-all">All Price</label>
-                            </div>
-                            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                <input type="checkbox" class="custom-control-input" name="below100" id="price-1" value="true">
-                                <label class="custom-control-label" for="price-1">$0 - $100</label>
-                            </div>
-                            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                <input type="checkbox" class="custom-control-input" name="below200" id="price-2" value="true">
-                                <label class="custom-control-label" for="price-2">$100 - $200</label>
-                            </div>
-                            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                <input type="checkbox" class="custom-control-input" name="below300" id="price-3" value="true">
-                                <label class="custom-control-label" for="price-3">$200 - $300</label>
-                            </div>
-                            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                <input type="checkbox" class="custom-control-input" name="below400" id="price-4" value="true">
-                                <label class="custom-control-label" for="price-4">$300 - $400</label>
-                            </div>
-                            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
-                                <input type="checkbox" class="custom-control-input" name="below500" id="price-5" value="true">
-                                <label class="custom-control-label" for="price-5">$400 - $500</label>
-                            </div>
-                            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-end">
-                                <button style="background-color: #D19C97; border: none; padding: 10px 20px; border-radius: 5px;">Summit</button>
-                            </div>
+                   <form action="FilterByPriceController" method="POST">
+    <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
+        <input type="radio" class="custom-control-input" <c:if test="${priceRange eq 'all'}">checked</c:if> name="price" id="price-all" value="all">
+        <label class="custom-control-label" for="price-all">All Price</label>
+    </div>
+    <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
+        <input type="radio" class="custom-control-input" <c:if test="${priceRange eq 'below100' }">checked</c:if>  name="price" id="price-1" value="below100">
+        <label class="custom-control-label" for="price-1">$0 - $100</label>
+    </div>
+    <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
+        <input type="radio" class="custom-control-input" <c:if test="${priceRange eq 'below200' }">checked</c:if>  name="price" id="price-2" value="below200">
+        <label class="custom-control-label" for="price-2">$100 - $200</label>
+    </div>
+    <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
+        <input type="radio" class="custom-control-input" <c:if test="${priceRange eq 'below300' }">checked</c:if>  name="price" id="price-3" value="below300">
+        <label class="custom-control-label" for="price-3">$200 - $300</label>
+    </div>
+    <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
+        <input type="radio" class="custom-control-input" <c:if test="${priceRange eq 'below400' }">checked</c:if>  name="price" id="price-4" value="below400">
+        <label class="custom-control-label" for="price-4">$300 - $400</label>
+    </div>
+    <div class="custom-control custom-radio d-flex align-items-center justify-content-between">
+        <input type="radio" class="custom-control-input" <c:if test="${priceRange eq 'below500' }">checked</c:if>  name="price" id="price-5" value="below500">
+        <label class="custom-control-label" for="price-5">$400 - $500</label>
+    </div>
+    <div class="custom-control custom-radio d-flex align-items-center justify-content-end">
+        <button style="background-color: #D19C97; border: none; padding: 10px 20px; border-radius: 5px;">Submit</button>
+    </div>
+</form>
 
-                        </form>
                     </div>
                     <!-- Price End -->
                 </div>

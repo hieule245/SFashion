@@ -138,8 +138,12 @@
                                 </div>
                             </div>
                         </div>
-
+                            <div style="
+                                    display: flex;
+                                    flex-wrap: wrap;
+                                                     ">
                         <c:forEach items="${listP}" var="o">
+                            
                             <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
                                 <div class="card product-item border-0 mb-4">
                                     <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
@@ -148,7 +152,7 @@
                                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                                         <h5 class="text-truncate mb-3">${o.name}</h5>
                                         <div class="d-flex justify-content-center">
-                                            <h6>$${o.price}</h6>
+                                            <h6>${o.price}00<u>đ</u></h6>
                                         </div>
                                         <div class="d-flex justify-content-center">
                                             <a href="ShopDetailController?uid=${o.user.userId}" class="btn btn-sm text-dark p-0"><h6>${o.user.username}</h6></a>
@@ -162,7 +166,7 @@
                             </div>
                         </c:forEach>
 
-
+                            </div>
 
                         <div class="col-12 pb-1">
                             <nav aria-label="Page navigation">

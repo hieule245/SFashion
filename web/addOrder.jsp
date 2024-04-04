@@ -7,6 +7,7 @@
 <%@page import="java.math.BigDecimal"%>
 <%@page import="dto.ShoppingCart"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <%    
@@ -18,7 +19,7 @@
     BigDecimal total_amount = shoppingCart.totalPrice();
 %>
     <head>
-        <meta charset="utf-8">
+        <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="Free HTML Templates" name="keywords">
         <meta content="Free HTML Templates" name="description">
@@ -30,6 +31,7 @@
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
+        <link href="img/favicon.png" rel="icon">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Add Product</title>

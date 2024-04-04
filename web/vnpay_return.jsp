@@ -21,7 +21,7 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>KẾT QUẢ THANH TOÁN</title>
+        <title>PAYMENT RESULT</title>
         <!-- Bootstrap core CSS -->
         <link href="assets/bootstrap.min.css" rel="stylesheet"/>
         <!-- Custom styles for this template -->
@@ -53,56 +53,56 @@
         <!--Begin display -->
         <div class="container">
             <div class="header clearfix">
-                <h3 class="text-muted">KẾT QUẢ THANH TOÁN</h3>
+                <h3 class="text-muted">PAYMENT RESULT</h3>
             </div>
             <div class="table-responsive">
                 <div class="form-group">
-                    <label >Mã giao dịch thanh toán:</label>
+                    <label >Payment Transaction Code:</label>
                     <label><%=request.getParameter("vnp_TxnRef")%></label>
                 </div>    
                 <div class="form-group">
-                    <label >Số tiền:</label>
+                    <label >Amount:</label>
                     <label><%=request.getParameter("vnp_Amount")%></label>
                 </div>  
                 <div class="form-group">
-                    <label >Mô tả giao dịch:</label>
+                    <label >Transaction Description:</label>
                     <label><%=request.getParameter("vnp_OrderInfo")%></label>
                 </div> 
                 <div class="form-group">
-                    <label >Mã lỗi thanh toán:</label>
+                    <label >Payment Error Code:</label>
                     <label><%=request.getParameter("vnp_ResponseCode")%></label>
                 </div> 
                 <div class="form-group">
-                    <label >Mã giao dịch tại CTT VNPAY-QR:</label>
+                    <label >Transaction code at CTT VNPAY-QR:</label>
                     <label><%=request.getParameter("vnp_TransactionNo")%></label>
                 </div> 
                 <div class="form-group">
-                    <label >Mã ngân hàng thanh toán:</label>
+                    <label >Payment bank code:</label>
                     <label><%=request.getParameter("vnp_BankCode")%></label>
                 </div> 
                 <div class="form-group">
-                    <label >Thời gian thanh toán:</label>
+                    <label >Payment Time:</label>
                     <label><%=request.getParameter("vnp_PayDate")%></label>
                 </div> 
                 <div class="form-group">
-                    <label >Tình trạng giao dịch:</label>
+                    <label >Payment Status:</label>
                     <label>
                         <%
                             if (signValue.equals(vnp_SecureHash)) {
                                 if ("00".equals(request.getParameter("vnp_TransactionStatus"))) {
-                                    out.print("Thành công");
+                                    out.print("Success!");
                                 %>
-                                <a class="btn btn-default" href="PaymentController">Quản lí đơn hàng</a>
+                                <a class="btn btn-default" href="PaymentController">Order Management</a>
                                 <%   
                                 } else {
-                                    out.print("Không thành công");
+                                    out.print("Error!");
                                 %>
-                                <a class="btn btn-default" href="cart.jsp">Trờ về giở hàng</a>
+                                <a class="btn btn-default" href="cart.jsp">Back to cart</a>
                                 <%
                                 }
 
                             } else {
-                                out.print("invalid signature");
+                                out.print("Invalid Signature");
                             }
                         %></label>
                 </div>

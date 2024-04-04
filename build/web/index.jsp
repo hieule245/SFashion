@@ -30,6 +30,7 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
+        <link href="img/favicon.png" rel="icon">
         <style>
             .container-img, .img-category {
                 display: grid;

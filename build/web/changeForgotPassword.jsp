@@ -8,6 +8,7 @@
     <title>Register your account</title>
     <link rel="stylesheet" href="material-design-iconic-font.min.css">
     <link rel="stylesheet" href="css/register.css" >
+    <link href="img/favicon.png" rel="icon">
     <style>
         .form-submit {
         margin-bottom: 10px;

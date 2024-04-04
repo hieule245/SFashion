@@ -46,6 +46,7 @@
         <title>Bootstrap CRUD Data Table for Database with Modal Form</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link href="img/favicon.png" rel="icon">
         <link href="css/manager.css" rel="stylesheet" type="text/css"/>
         <style>
             .admin-role {

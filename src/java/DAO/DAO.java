@@ -1666,4 +1666,37 @@ public class DAO extends DBconnect {
         DAO dao = new DAO();
         dao.addChatRoom(3, 5);
     }
+
+    
+   public List<Product> getProductsByPriceRange(BigDecimal minPrice, BigDecimal maxPrice) {
+    List<Product> products = new ArrayList<>();
+    String queryString = "SELECT * FROM product WHERE price >= ? AND price <= ?";
+
+    try (PreparedStatement ps = connection.prepareStatement(queryString)) {
+        ps.setBigDecimal(1, minPrice);
+        ps.setBigDecimal(2, maxPrice);
+
+        try (ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                products.add(new Product(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getBigDecimal(3).setScale(1, BigDecimal.ROUND_DOWN),
+                        rs.getInt(4),
+                        rs.getString(5),
+                        rs.getInt(6),
+                        getCategoryById(rs.getInt(7)),
+                        getUserByID(rs.getInt(8)),
+                        rs.getString(9),
+                        getImagesByProductID(rs.getInt(1))
+                ));
+            }
+        }
+    } catch (SQLException e) {
+        // Handle the exception according to your application's requirements
+        e.printStackTrace();
+    }
+
+    return products;
+}
+
 }

@@ -62,6 +62,7 @@
                     </tr>
                 </thead>
                 <tbody id="table-body">
+                    
                     <c:forEach items="${sessionScope.orderList}" var="item">
                     <input type="hidden" name="order_id" value="${item.getOrderId()}">
                     <tr>

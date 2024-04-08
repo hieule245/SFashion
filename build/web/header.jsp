@@ -38,7 +38,7 @@
             </a>
         </div>
         <div class="col-lg-5 col-5 text-left">
-            <form action="SearchController" method="GET">
+            <form action="shopController" method="GET">
                 <div class="input-group">
                     <input name="search" id="input-search" type="text" class="form-control" placeholder="Search for products">
                     <button class="btn btn-outline-primary d-flex align-items-center" style="border: none; background: none;">
@@ -115,7 +115,6 @@
                         </c:if>
                         <c:if test="${sessionScope.user != null}">
                             <c:if test="${sessionScope.user.getRole() == '2'}">
-                                <a href="cart.jsp" class="nav-item nav-link">Shopping Cart</a>
                                 <a href="./productManagerController" class="nav-item nav-link">Product Manager</a>
                             </c:if>
                             <c:if test="${sessionScope.user.getRole() == '2' || sessionScope.user.getRole() == '3'}">
@@ -130,10 +129,6 @@
                             <a href="./Login.jsp" class="nav-item nav-link">Sign in</a>
                             <a href="Register.jsp" class="nav-item nav-link">Sign up</a>
                         </div>
-                    </c:if>
-
-                    <c:if test="${sessionScope.user.getRole() == '2'}">
-                        <a href="productManagerController" class="nav-item nav-link">Post For Sale</a>
                     </c:if>
 
                     <c:if test="${sessionScope.user.getRole() == '1'}">

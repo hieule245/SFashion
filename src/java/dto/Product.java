@@ -7,6 +7,8 @@ package dto;
 import DAO.DAO;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Product {
@@ -190,5 +192,23 @@ public class Product {
         return "Product{" + "productId=" + productId + ", name=" + name + ", price=" + price + ", quantity=" + quantity + ", description=" + description + ", quantitySold=" + quantitySold + ", category=" + category + ", user=" + user + ", images=" + images + '}';
     }
     
+    public List<Product> sortProductsByPriceAscending(List<Product> productList) {
+        Collections.sort(productList, new Comparator<Product>() {
+            @Override
+            public int compare(Product p1, Product p2) {
+                return p1.getPrice().compareTo(p2.getPrice());
+            }
+        });
+        return productList;
+    }
     
+  public List<Product> sortProductsByPriceDescending(List<Product> productList) {
+    Collections.sort(productList, new Comparator<Product>() {
+        @Override
+        public int compare(Product p1, Product p2) {
+            return p2.getPrice().compareTo(p1.getPrice()); // Sắp xếp giảm dần
+        }
+    });
+    return productList;
+}
 }

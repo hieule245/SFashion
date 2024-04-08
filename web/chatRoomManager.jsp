@@ -125,12 +125,16 @@
                     </ul>
                 </div>
             </div>
+<<<<<<< HEAD
             <c:if test="${sessionScope.user.getRole() == '2'} || ${sessionScope.user.getRole() == '1'}">
                 <a href="index.jsp"><button type="button" class="btn btn-primary">Back to home</button>
                 </c:if>
                 <c:if test="${sessionScope.user.getRole() == '3'}">
                     <a href="DashboardController"><button type="button" class="btn btn-primary">Back to home</button>
                     </c:if>     
+=======
+            <a href="index.jsp"><button type="button" class="btn btn-primary">Back to home</button>
+>>>>>>> 5a7e33f8c12d1efdd28c922f5d74c04f69f6d764
 
                     </div>
                     <!-- Edit Modal HTML -->

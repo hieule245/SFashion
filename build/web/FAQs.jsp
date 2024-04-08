@@ -47,7 +47,7 @@
 
         <button class="accordion">I have not been confirmed after placing the order</button>
         <div class="panel">
-            <p>After placing an order, please check your mail, we will send you an email to confirm that you have ordered the item.</p>
+            <p>We will send you an email to confirm that you have ordered the item.</p>
             <p>Please take the initiative to call us via phone number: <b>+84(0) 0123 456 789</b> or contact us via <a href="https://www.facebook.com/thuthuy1911.vn" ><b>Facebook</b></a></p>
         </div>
 

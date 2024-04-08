@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <%
-    // Check for success message and display alert
+        // Check for success message and display alert
         String Message = (String) session.getAttribute("Message");
         if (Message != null) {
             out.println("<script>");
@@ -147,7 +147,7 @@
                             <th class="align-middle">ID</th>
                             <th class="align-middle">Name</th>
                             <th class="align-middle">Image</th>  
-                            <th class="align-middle">Owner</th>
+                            <th class="align-middle">Category</th>
                             <th class="align-middle">Quantity</th>
                             <th class="align-middle">Price</th>
                             <th class="align-middle">Status</th>
@@ -164,7 +164,7 @@
                                         <img src="data:image/jpeg;base64,${o.images[0].getImg()}" alt="Image" />
                                     </c:if>
                                 </td>
-                                <td class="align-middle">${o.user.username}</td>
+                                <td class="align-middle">${o.category.name}</td>
                                 <td class="align-middle">${o.quantity}</td>
                                 <td class="align-middle">${o.price} $</td>
                                 <c:if test="${o.status == '0'}">
@@ -178,7 +178,7 @@
                                     <td class="align-middle blocked-product">Blocked</td>
                                 </c:if>
                                 <td>
-                                    <form action="productManagerController" method="POST" id="signup-form" class="btn">
+                                    <form action="productManagerController" method="POST" id="signup-form" class="btn" accept-charset="UTF-8">
                                         <input type="hidden" name="product_id" id="product_id" value="${o.productId}"/>
                                         <div>
                                             <%-- Duyệt/vô hiệu hoá sản phẩm của admin --%>
@@ -192,9 +192,9 @@
                                                 </c:if>
                                             </c:if>
                                             <%-- --%>
-                                            <a href="#editProduct"  class="btn btn-primary" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                            <a href="#editProduct"  class="btn btn-primary" data-toggle="modal"><i style="display:flex; justify-content: center; align-items: center;" class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                             <c:if test="${sessionScope.user.getRole() == '2'}">
-                                                <c:if test="${o.status == '1'}">
+                                                    <c:if test="${o.status == '1'}">
                                                     <a href="changeProductStatusController?pid=${o.productId}&status=${o.status}&action=block" type="submit" name="action" value="changeStatus" class="btn btn-primary">Block</a>
                                                 </c:if>
 
@@ -281,7 +281,7 @@
         <div id="addProduct" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form action="addProductController" method="POST" enctype="multipart/form-data">
+                    <form action="addProductController" method="POST" enctype="multipart/form-data" accept-charset="UTF-8">
                         <div class="modal-header">
                             <h4 class="modal-title">Add Product</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

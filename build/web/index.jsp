@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <%
-    // Check for success message and display alert
+        // Check for success message and display alert
         String Message = (String) session.getAttribute("Message");
         if (Message != null) {
             out.println("<script>");
@@ -88,26 +88,6 @@
                         <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">S</span>Fashion</h1>
                     </a>
                 </div>
-                <div class="col-lg-5 col-5 text-left">
-                    <form action="SearchController" method="GET">
-                        <div class="input-group">
-                            <input name="search" id="input-search" type="text" class="form-control" placeholder="Search for products">
-                            <button class="btn btn-outline-primary d-flex align-items-center" style="border: none; background: none;">
-                                <span class="input-group-text bg-transparent text-primary">
-                                    <i class="fa fa-search"></i>
-                                </span>
-                            </button>
-                        </div>
-
-                    </form>
-                </div>
-                <c:if test="${sessionScope.user != null && sessionScope.user.getRole()=='2'}">
-                    <div class="col-lg-1 col-2 text-right">
-                        <a href="./cart.jsp" class="btn border">
-                                <i class="fas fa-shopping-cart text-primary"></i> <span class="badge badge-light">${sessionScope.ShoppingCart.totalQuantity()}</span>
-                        </a>
-                    </div>
-                </c:if>
             </div>
 
         </div>
@@ -165,7 +145,6 @@
                                 </c:if>
                                 <c:if test="${sessionScope.user != null}">
                                     <c:if test="${sessionScope.user.getRole() == '2'}">
-                                        <a href="cart.jsp" class="nav-item nav-link">Shopping Cart</a>
                                         <a href="./productManagerController" class="nav-item nav-link">Product Manager</a>
                                     </c:if>
                                     <c:if test="${sessionScope.user.getRole() == '2' || sessionScope.user.getRole() == '3'}">
@@ -174,18 +153,19 @@
                                     <a href="./MessengerManagerController" class="nav-item nav-link">Messenger</a>
                                 </c:if>
                             </div>
-
                             <c:if test="${sessionScope.user == null}">
                                 <div class="navbar-nav ml-auto py-0">
                                     <a href="./Login.jsp" class="nav-item nav-link">Sign in</a>
                                     <a href="Register.jsp" class="nav-item nav-link">Sign up</a>
                                 </div>
                             </c:if>
-
-                            <c:if test="${sessionScope.user.getRole() == '2'}">
-                                <a href="productManagerController" class="nav-item nav-link">Post For Sale</a>
+                            <c:if test="${sessionScope.user != null && sessionScope.user.getRole()=='2'}">
+                                <div class="col-lg-2 col-3 text-right">
+                                    <a href="./cart.jsp" class="btn border">
+                                        <i class="fas fa-shopping-cart text-primary"></i> <span class="badge badge-light">${sessionScope.ShoppingCart.totalQuantity()}</span>
+                                    </a>
+                                </div>
                             </c:if>
-
                             <c:if test="${sessionScope.user.getRole() == '1'}">
                                 <div class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Manager</a>

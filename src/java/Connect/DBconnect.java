@@ -19,7 +19,7 @@ public class DBconnect {
         try {
             String url="jdbc:sqlserver://localhost:1433;databaseName=platform_online";
             String username="sa";
-            String password="haidang123";
+            String password="123";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");              
             connection =DriverManager.getConnection(url,username,password);
             

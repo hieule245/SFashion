@@ -56,6 +56,8 @@ public class shopController extends HttpServlet {
         if(search!=null){
             list = p.findProductsByString(list,search);
         }
+        String priceRange = "all";
+        
         List<Category> listC = dao.getAllCategories();
         
  if (action != null) {
@@ -86,6 +88,7 @@ public class shopController extends HttpServlet {
         session.setAttribute("listP", list);
         request.setAttribute("endPage", endPage);
         request.setAttribute("tag", index);
+        request.setAttribute("priceRange", priceRange);
         request.getRequestDispatcher("shop.jsp").forward(request, response);
     }
 

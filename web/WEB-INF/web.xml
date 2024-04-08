@@ -283,6 +283,10 @@
         <servlet-name>ChatboxController</servlet-name>
         <servlet-class>Controller.ChatboxController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchProduct</servlet-name>
+        <servlet-class>Controller.SearchProduct</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddToCartController</servlet-name>
         <url-pattern>/AddToCartController</url-pattern>
@@ -533,8 +537,13 @@
         <url-pattern>/ChatboxController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+<<<<<<< HEAD
         <servlet-name>OrderManagerForAdmin</servlet-name>
         <url-pattern>/OrderManagerForAdmin</url-pattern>
+=======
+        <servlet-name>SearchProduct</servlet-name>
+        <url-pattern>/SearchProduct</url-pattern>
+>>>>>>> 5a7e33f8c12d1efdd28c922f5d74c04f69f6d764
     </servlet-mapping>
     <session-config>
         <session-timeout>

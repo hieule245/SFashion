@@ -132,8 +132,13 @@
                                         Sort by
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
+<<<<<<< HEAD
                                         <a class="dropdown-item" href="shopController?action=lowest">min to max</a>
                                         <a class="dropdown-item" href="shopController?action=highest">max to min</a>
+=======
+                                        <a class="dropdown-item" href="SearchProduct?action=highest">Top</a>
+                                        <a class="dropdown-item" href="SearchProduct?action=lowest">Popularity</a>
+>>>>>>> 5a7e33f8c12d1efdd28c922f5d74c04f69f6d764
                                        
                                 </div>
                             </div>

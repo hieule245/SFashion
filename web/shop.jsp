@@ -340,7 +340,7 @@
                             <h5 class="font-weight-semi-bold mb-4">Filter by category</h5>
                             <form action="FilterByPriceController" method="POST">
                                 <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
-                                    <ul>
+                                    <div class="navbar-nav w-100" style="height: 410px; overflow-y: auto;" >
                                     <c:if test="${sessionScope.user.getRole() == '2' || sessionScope.user == null}">
                                         <div class="scrollable-list">
                                             <ul class="navbar-nav w-100 overflow-hidden" style="height: 410px">
@@ -352,7 +352,7 @@
                                             </ul>
                                         </div>
                                     </c:if>
-                                </ul>
+                                </div>
                             </div>
                         </form>
                     </div>

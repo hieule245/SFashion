@@ -419,6 +419,15 @@ public class DAO extends DBconnect {
         }
         return list;
     }
+    
+    public static void main(String[] args) {
+        DAO dao = new DAO();
+        List<Category> list = dao.getAllCategories();
+        for ( Category o: list){
+            System.out.println(o.getName());
+        }
+    }
+    
     public List<Product> getAllProducts() {
         List<Product> list = new ArrayList<>();
         String queryString = "SELECT * from product";
@@ -1710,8 +1719,8 @@ public class DAO extends DBconnect {
         }
         return discounts;
     }
-    public static void main(String[] args) {
-        DAO dao = new DAO();
-        dao.addChatRoom(3, 5);
-    }
+//    public static void main(String[] args) {
+//        DAO dao = new DAO();
+//        dao.addChatRoom(3, 5);
+//    }
 }

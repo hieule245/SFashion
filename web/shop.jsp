@@ -336,43 +336,63 @@
                             </form>
 
                         </div>
-                        <!-- Price End -->
+                        <div class="border-bottom mb-4 pb-4">
+                            <h5 class="font-weight-semi-bold mb-4">Filter by category</h5>
+                            <form action="FilterByPriceController" method="POST">
+                                <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
+                                    <ul>
+                                    <c:if test="${sessionScope.user.getRole() == '2' || sessionScope.user == null}">
+                                        <div class="scrollable-list">
+                                            <ul class="navbar-nav w-100 overflow-hidden" style="height: 410px">
+                                                <c:forEach items="${sessionScope.listCC}" var="o">
+                                                    <li class="nav-item">
+                                                        <a href="CategoryController?cid=${o.categoryId}" class="nav-link">${o.name}</a>
+                                                    </li>
+                                                </c:forEach>
+                                            </ul>
+                                        </div>
+                                    </c:if>
+                                </ul>
+                            </div>
+                        </form>
                     </div>
-                    <!-- Shop Sidebar End -->
+                    <!-- Price End -->
+                </div>
+                <!-- Shop Sidebar End -->
 
 
-                    <!-- Shop Product Start -->
-                    <div class="col-lg-9 col-md-12">
-                        <div class="row pb-3">
-                            <div class="col-12 pb-1">
-                                <div class="d-flex align-items-center justify-content-between mb-4">
-                                    <form action="shopController" method="GET">
-                                        <div class="input-group">
-                                            <input name="search" id="input-search" type="text" class="form-control" placeholder="Search for products">
-                                            <button class="btn btn-outline-primary d-flex align-items-center" style="border: none; background: none;">
-                                                <span class="input-group-text bg-transparent text-primary">
-                                                    <i class="fa fa-search"></i>
-                                                </span>
-                                            </button>
-                                        </div>
-
-                                    </form>
-                                    <div class="dropdown ml-4">
-                                        <button class="btn border dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false">
-                                            Sort by
+                <!-- Shop Product Start -->
+                <div class="col-lg-9 col-md-12">
+                    <div class="row pb-3">
+                        <div class="col-12 pb-1">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <form action="shopController" method="GET">
+                                    <div class="input-group">
+                                        <input name="search" id="input-search" type="text" class="form-control" placeholder="Search for products">
+                                        <button class="btn btn-outline-primary d-flex align-items-center" style="border: none; background: none;">
+                                            <span class="input-group-text bg-transparent text-primary">
+                                                <i class="fa fa-search"></i>
+                                            </span>
                                         </button>
-                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
-                                            <a class="dropdown-item" href="SearchProduct?action=highest">Top</a>
-                                            <a class="dropdown-item" href="SearchProduct?action=lowest">Popularity</a>
+                                    </div>
 
-                                        </div>
+                                </form>
+                                <div class="dropdown ml-4">
+                                    <button class="btn border dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                        Sort by
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
+                                        <a class="dropdown-item" href="SearchProduct?action=highest">Top</a>
+                                        <a class="dropdown-item" href="SearchProduct?action=lowest">Popularity</a>
+
                                     </div>
                                 </div>
-                                <div style="
-                                     display: flex;
-                                     flex-wrap: wrap;
-                                     ">
+                            </div>
+                            <div style="
+                                 display: flex;
+                                 flex-wrap: wrap;
+                                 ">
                                 <c:forEach items="${listP}" var="o">
 
                                     <div class="col-lg-4 col-md-6 col-sm-12 pb-1">

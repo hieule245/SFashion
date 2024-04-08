@@ -46,6 +46,7 @@
         <title>Bootstrap CRUD Data Table for Database with Modal Form</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link href="img/favicon.png" rel="icon">
         <link href="css/manager.css" rel="stylesheet" type="text/css"/>
         <style>
             .admin-role {
@@ -68,7 +69,7 @@
             <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
                 <h1 class="font-weight-semi-bold text-uppercase mb-3">Accounts Manager</h1>
                 <div class="d-inline-flex">
-                    <p class="m-0"><a href="">Home</a></p>
+                    <p class="m-0"><a href="index.jsp">Home</a></p>
                     <p class="m-0 px-2">-</p>
                     <p class="m-0">Accounts Manager</p>
                 </div>

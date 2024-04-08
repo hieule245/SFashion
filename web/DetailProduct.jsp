@@ -21,12 +21,13 @@
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
+        <link href="img/favicon.png" rel="icon">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <style>
             .gallery-wrap .img-big-wrap img {
                 height: 450px;
-                width: auto;
+                width: 100%;
                 display: inline-block;
                 cursor: zoom-in;
             }
@@ -70,8 +71,8 @@
                             <div class="row">
                                 <aside class="col-sm-5 border-right">
                                     <article class="gallery-wrap"> 
-                                        <div class="img-big-wrap">
-                                            <img src="data:image/jpeg;base64,${detail.images[0].getImg()}" alt="Image" />
+                                        <div class="img-big-wrap" >
+                                            <img  src="data:image/jpeg;base64,${detail.images[0].getImg()}" alt="Image" />
                                         </div> <!-- slider-product.// -->
                                         <div class="img-small-wrap">
                                         </div> <!-- slider-nav.// -->

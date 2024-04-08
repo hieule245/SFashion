@@ -45,6 +45,7 @@ public class productManagerController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String url = "";
         String indexPage = request.getParameter("index");
         String search = request.getParameter("search");
         if(indexPage==null){
@@ -61,9 +62,11 @@ public class productManagerController extends HttpServlet {
         List<Product> products;
         Product product = new Product();
         if ("1".equals(c.getRole())) {
+            url = "AdminUIProductsManage.jsp";
             products = dao.pagingAllProducts(index);
         }else{
             products = dao.pagingProducts(index,id);
+            url = "productManager.jsp";
         }
         if (search!=null) {
             products = product.findProductsByString(products,search);
@@ -73,7 +76,7 @@ public class productManagerController extends HttpServlet {
         session.setAttribute("listP", products);
         request.setAttribute("endPage", endPage);
         request.setAttribute("tag", index);
-        request.getRequestDispatcher("AdminUIProductsManage.jsp").forward(request, response);
+        request.getRequestDispatcher(url).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

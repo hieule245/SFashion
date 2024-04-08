@@ -154,6 +154,10 @@
         <servlet-class>Controller.OrderManagerController</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>OrderManagerAdmin</servlet-name>
+        <servlet-class>Controller.OrderManagerAdmin</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>Config</servlet-name>
         <servlet-class>VNPay.Config</servlet-class>
     </servlet>
@@ -172,6 +176,10 @@
     <servlet>
         <servlet-name>PaymentController</servlet-name>
         <servlet-class>VNPay.PaymentController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>OrderManagerForAdmin</servlet-name>
+        <servlet-class>Controller.OrderManagerForAdmin</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Config</servlet-name>
@@ -523,6 +531,10 @@
     <servlet-mapping>
         <servlet-name>ChatboxController</servlet-name>
         <url-pattern>/ChatboxController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderManagerForAdmin</servlet-name>
+        <url-pattern>/OrderManagerForAdmin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

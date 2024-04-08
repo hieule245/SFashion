@@ -68,6 +68,8 @@ public class profileController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         HttpSession session=request.getSession();
         DAO dao = new DAO();
         String action =request.getParameter("action");

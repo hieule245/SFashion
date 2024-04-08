@@ -6,7 +6,6 @@ package Controller;
 
 import DAO.DAO;
 import dto.OrderTable;
-import dto.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -19,9 +18,9 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Admin
+ * @author flywt
  */
-public class DashboardController extends HttpServlet {
+public class OrderManagerForAdmin extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,10 +34,13 @@ public class DashboardController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        User admin = (User)session.getAttribute("user");
-        session.setAttribute("admin", admin);
-        request.getRequestDispatcher("AdminUIDashboard.jsp").forward(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+            HttpSession session = request.getSession();
+            DAO dao = new DAO();
+            List<OrderTable> orderTables = new ArrayList<OrderTable>();
+            orderTables = dao.getAllOrderTableForAdmin();
+            session.setAttribute("orderList", orderTables);
+            request.getRequestDispatcher("AdminUITransactionManage.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

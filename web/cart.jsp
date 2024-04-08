@@ -36,7 +36,7 @@
         <meta content="Free HTML Templates" name="description">
 
         <!-- Favicon -->
-        <link href="img/favicon.ico" rel="icon">
+        <link href="img/favicon.png" rel="icon">
 
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -54,10 +54,10 @@
         <%@include file="header.jsp" %>
         <!-- Page Header Start -->
         <div class="container-fluid bg-secondary mb-5">
-            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="padding: 50px">
                 <h1 class="font-weight-semi-bold text-uppercase mb-3">Shopping Cart</h1>
                 <div class="d-inline-flex">
-                    <p class="m-0"><a href="">Home</a></p>
+                    <p class="m-0"><a href="index.jsp">Home</a></p>
                     <p class="m-0 px-2">-</p>
                     <p class="m-0">Shopping Cart</p>
                 </div>
@@ -133,12 +133,12 @@
                                     <h6 id="totalPriceCart" class="font-weight-medium"><c:out value="${totalCart}" /></h6>
                                 </div>
                                 <div class="d-flex justify-content-between">
-                                    <h6 class="font-weight-medium">Ship Fee For Each Orders</h6>
+                                    <h6 class="font-weight-medium">Ship Fee For Each Brands</h6>
                                     <h6 id="shipFees" class="font-weight-medium">10</h6>
                                 </div>
                                 <div class="d-flex justify-content-between">
                                     <h6 class="font-weight-medium">Orders in Cart</h6>
-                                    <h6 id="shipFees" class="font-weight-medium">${sessionScope.ShoppingCart.countUniqueSellers()}</h6>
+                                    <h6 id="shipFees" class="font-weight-medium">${sessionScope.ShoppingCart.totalQuantity()}</h6>
                                 </div>
                                 <div class="d-flex justify-content-between">
                                     <h6 class="font-weight-medium">Discount</h6>

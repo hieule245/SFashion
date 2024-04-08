@@ -19,7 +19,7 @@
         <meta content="Free HTML Templates" name="keywords">
         <meta content="Free HTML Templates" name="description">
 
-        <link href="img/favicon.ico" rel="icon">
+        <link href="img/favicon.png" rel="icon">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -38,8 +38,15 @@
                 display: block;
                 margin-left: auto;
                 margin-right: auto;
+                width: 100%;
+                border-radius: 10px;
                 /* Add any additional styles as needed */
             }
+            
+            .fa-angle-right:before, .fa-angle-left:before{
+                color: white;
+            }
+
         </style>    
         <link rel="stylesheet" href="css/ratingstar.css"/>
         <link href="css/style.css" rel="stylesheet">
@@ -54,7 +61,7 @@
             <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
                 <h1 class="font-weight-semi-bold text-uppercase mb-3">Product Detail</h1>
                 <div class="d-inline-flex">
-                    <p class="m-0"><a href="">Home</a></p>
+                    <p class="m-0"><a href="index.jsp">Home</a></p>
                     <p class="m-0 px-2">-</p>
                     <p class="m-0">Product Detail</p>
                 </div>
@@ -70,7 +77,7 @@
                     <div id="product-carousel" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner border">
                             <%
-                                List<Image> images = (List<Image>)session.getAttribute("images"); // Assuming `detail.getImages()` returns the list of images
+                                List<Image> images = (List<Image>) session.getAttribute("images"); // Assuming `detail.getImages()` returns the list of images
                                 for (int index = 0; index < images.size(); index++) {
                                     Image image = images.get(index);
 
@@ -81,10 +88,10 @@
 
                                     // Generate the carousel item HTML code
                                     String carouselItem = String.format(
-                                        "<div class=\"carousel-item %s\">\n" +
-                                        "    <img class=\"centered-image\" src=\"data:image/jpeg;base64,%s\" alt=\"Image\" />\n" +
-                                        "</div>",
-                                        activeClass, imageSource
+                                            "<div class=\"carousel-item %s\">\n"
+                                            + "    <img class=\"centered-image\" src=\"data:image/jpeg;base64,%s\" alt=\"Image\" />\n"
+                                            + "</div>",
+                                            activeClass, imageSource
                                     );
 
                                     // Print or do something with the carousel item
@@ -186,7 +193,7 @@
                                 <small class="fas fa-star"></small>
                                 <small class="fas fa-star-half-alt"></small>
                             </c:if>
-                                <c:if test="${detail.averageReviews() > 4.75 && detail.averageReviews() <= 5}">
+                            <c:if test="${detail.averageReviews() > 4.75 && detail.averageReviews() <= 5}">
                                 <small class="fas fa-star"></small>
                                 <small class="fas fa-star"></small>
                                 <small class="fas fa-star"></small>
@@ -196,30 +203,30 @@
                         </div>
                         <small class="pt-1">(${detail.countReviews()} Reviews)</small>
                     </div>
-                    <h3>Price: $${detail.price}</h3>
+                        <h3>Price: ${detail.price}00 <u>đ</u></h3>
                     <p class="mb-4">Please scroll down to see more descriptions, and click "Add to cart" to order.</p>
                     <form action="addtoCart">
                         <input  type="hidden" name="pid" value="${detail.productId}">
-                    <div class="d-flex align-items-center mb-4 pt-2">
-                        <div class="input-group quantity mr-3" style="width: 130px;">
-                            <input id="cartItemQuantity" name="quantity" min="1" max="${detail.getQuantity()}"  type="number" class="form-control form-control-sm bg-secondary text-center" required>
+                        <div class="d-flex align-items-center mb-4 pt-2">
+                            <div class="input-group quantity mr-3" style="width: 130px;">
+                                <input id="cartItemQuantity" name="quantity" min="1" max="${detail.getQuantity()}"  type="number" class="form-control form-control-sm bg-secondary text-center" required>
+                            </div>
+                            <button type="submit" id="addToCart"  class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button>
                         </div>
-                        <button type="submit" id="addToCart"  class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button>
-                    </div>
                     </form>
                     <div class="d-flex pt-2">
                         <p class="text-dark font-weight-medium mb-0 mr-2">Share on:</p>
                         <div class="d-inline-flex">
-                            <a class="text-dark px-2" href="">
+                            <a class="text-dark px-2" href="" title="Facebook">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
-                            <a class="text-dark px-2" href="">
+                            <a class="text-dark px-2" href="" title="Twitter">
                                 <i class="fab fa-twitter"></i>
                             </a>
-                            <a class="text-dark px-2" href="">
+                            <a class="text-dark px-2" href="" title="Linked in">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
-                            <a class="text-dark px-2" href="">
+                            <a class="text-dark px-2" href="" title="Pinterest">
                                 <i class="fab fa-pinterest"></i>
                             </a>
                         </div>
@@ -245,7 +252,7 @@
                             <p>Was distributed by Group 4 SE17B01 FPTU </p>
                             <div class="row">
                                 <div class="col-md-3">
-                                     <div class="media mb-4">
+                                    <div class="media mb-4">
                                         <img src="img/user-2.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
                                         <div class="media-body">
                                             <h6>${detail.user.getUsername()}</h6>
@@ -269,126 +276,126 @@
                                 <div class="col-md-6">
                                     <h4 class="mb-4">Review</h4>
                                     <c:forEach items="${reviewList}" var="item"><%-- Vòng lặp list tất cả reviews của sản phẩm --%>
-                                    <div class="media mb-4">
-                                        <img src="img/user-2.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
-                                        <div class="media-body">
-                                            <h6>${item.user.getUsername()}<small> - <i>${item.date}</i></small></h6>
-                                            <div class="text-primary mb-2">
-                                                <c:if test="${item.rating == 0.5}">
-                                                    <i class="fas fa-star-half-alt"></i>
-                                                    <i class="far fa-star"></i>
-                                                    <i class="far fa-star"></i>
-                                                    <i class="far fa-star"></i>
-                                                    <i class="far fa-star"></i>
-                                                </c:if>
-                                                <c:if test="${item.rating == 1}">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="far fa-star"></i>
-                                                    <i class="far fa-star"></i>
-                                                    <i class="far fa-star"></i>
-                                                    <i class="far fa-star"></i>
-                                                </c:if>
-                                                <c:if test="${item.rating == 1.5}">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star-half-alt"></i>
-                                                    <i class="far fa-star"></i>
-                                                    <i class="far fa-star"></i>
-                                                    <i class="far fa-star"></i>
-                                                </c:if>
-                                                <c:if test="${item.rating == 2}">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="far fa-star"></i>
-                                                    <i class="far fa-star"></i>
-                                                    <i class="far fa-star"></i>
-                                                </c:if>
-                                                <c:if test="${item.rating == 2.5}">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star-half-alt"></i>
-                                                    <i class="far fa-star"></i>
-                                                    <i class="far fa-star"></i>
-                                                </c:if>
-                                                <c:if test="${item.rating == 3}">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="far fa-star"></i>
-                                                    <i class="far fa-star"></i>
-                                                </c:if>
+                                        <div class="media mb-4">
+                                            <img src="img/user-2.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                                            <div class="media-body">
+                                                <h6>${item.user.getUsername()}<small> - <i>${item.date}</i></small></h6>
+                                                <div class="text-primary mb-2">
+                                                    <c:if test="${item.rating == 0.5}">
+                                                        <i class="fas fa-star-half-alt"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                    </c:if>
+                                                    <c:if test="${item.rating == 1}">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                    </c:if>
+                                                    <c:if test="${item.rating == 1.5}">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star-half-alt"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                    </c:if>
+                                                    <c:if test="${item.rating == 2}">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                    </c:if>
+                                                    <c:if test="${item.rating == 2.5}">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star-half-alt"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                    </c:if>
+                                                    <c:if test="${item.rating == 3}">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                    </c:if>
                                                     <c:if test="${item.rating == 3.5}">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star-half-alt"></i>
-                                                    <i class="far fa-star"></i>
-                                                </c:if>
-                                                <c:if test="${item.rating == 4}">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="far fa-star"></i>
-                                                </c:if>
-                                                <c:if test="${item.rating == 4.5}">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star-half-alt"></i>
-                                                </c:if>
-                                                <c:if test="${item.rating == 5}">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </c:if>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star-half-alt"></i>
+                                                        <i class="far fa-star"></i>
+                                                    </c:if>
+                                                    <c:if test="${item.rating == 4}">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                    </c:if>
+                                                    <c:if test="${item.rating == 4.5}">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star-half-alt"></i>
+                                                    </c:if>
+                                                    <c:if test="${item.rating == 5}">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                    </c:if>
+                                                </div>
+                                                <p>${item.comment}</p>
                                             </div>
-                                            <p>${item.comment}</p>
                                         </div>
-                                    </div>
                                     </c:forEach>
                                 </div>
                                 <div class="col-md-6">
                                     <%--Feedback--%>
                                     <form action="AddReviews">
                                         <input type="hidden" name="productId" value="${detail.productId}">
-                                    <h4 class="mb-4">Leave a review</h4>
-                                    <small>Your email address will not be published. Required fields are marked *</small>
-                                    <div class="d-flex my-3">
-                                        <p class="mb-0 mr-2">Your Rating * :</p>
-                                        <div id="text-primary">
-                                            <input type="radio" id="star5" name="rating" value="5" />
-                                            <label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                                        <h4 class="mb-4">Leave a review</h4>
+                                        <small>Your email address will not be published. Required fields are marked *</small>
+                                        <div class="d-flex my-3">
+                                            <p class="mb-0 mr-2">Your Rating * :</p>
+                                            <div id="text-primary">
+                                                <input type="radio" id="star5" name="rating" value="5" />
+                                                <label class = "full" for="star5" title="Awesome - 5 stars"></label>
 
-                                            <input type="radio" id="star4half" name="rating" value="4.5" />
-                                            <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                                                <input type="radio" id="star4half" name="rating" value="4.5" />
+                                                <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
 
-                                            <input type="radio" id="star4" name="rating" value="4" />
-                                            <label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                                                <input type="radio" id="star4" name="rating" value="4" />
+                                                <label class = "full" for="star4" title="Pretty good - 4 stars"></label>
 
-                                            <input type="radio" id="star3half" name="rating" value="3.5" />
-                                            <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                                            <input type="radio" id="star3" name="rating" value="3" />
-                                            <label class = "full" for="star3" title="Meh - 3 stars"></label>
+                                                <input type="radio" id="star3half" name="rating" value="3.5" />
+                                                <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                                                <input type="radio" id="star3" name="rating" value="3" />
+                                                <label class = "full" for="star3" title="Meh - 3 stars"></label>
 
-                                            <input type="radio" id="star2half" name="rating" value="2.5" />
-                                            <label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                                                <input type="radio" id="star2half" name="rating" value="2.5" />
+                                                <label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
 
-                                            <input type="radio" id="star2" name="rating" value="2" />
-                                            <label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                                                <input type="radio" id="star2" name="rating" value="2" />
+                                                <label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
 
-                                            <input type="radio" id="star1half" name="rating" value="1.5" />
-                                            <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                                                <input type="radio" id="star1half" name="rating" value="1.5" />
+                                                <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
 
-                                            <input type="radio" id="star1" name="rating" value="1" />
-                                            <label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                                                <input type="radio" id="star1" name="rating" value="1" />
+                                                <label class = "full" for="star1" title="Sucks big time - 1 star"></label>
 
-                                            <input type="radio" id="starhalf" name="rating" value="0.5" />
-                                            <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                                                <input type="radio" id="starhalf" name="rating" value="0.5" />
+                                                <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                                            </div>
                                         </div>
-                                    </div>
                                         <div class="form-group">
                                             <label for="message">Your Review *</label>
                                             <textarea name="comment" id="comment" cols="30" rows="5" class="form-control"></textarea>

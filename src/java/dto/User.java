@@ -186,11 +186,8 @@ public class User {
     }
     public int countSoldProduct(){
         DAO dao = new DAO();
-        this.orderTables = dao.getOrderTableBySellerId(userId);
-        int count = 0;
-        for(OrderTable orderTable:orderTables){
-            count+=orderTable.getOrderItems().size();
-        }
+        this.orderTables = dao.getCountOrderTableForAdmin();
+        int count = this.orderTables.size();
         return count;
     }
     public BigDecimal Revenue(){

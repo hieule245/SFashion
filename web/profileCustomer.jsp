@@ -13,7 +13,7 @@
         <meta content="Free HTML Templates" name="keywords">
         <meta content="Free HTML Templates" name="description">
 
-        <link href="img/favicon.ico" rel="icon">
+        <link href="img/favicon.png" rel="icon">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -41,7 +41,7 @@
                 </div>
                 
                 <div class="panel-body col-md-8">
-                    <form action="profileController" method="POST" class="form-horizontal" role="form">
+                    <form action="profileController" method="POST" class="form-horizontal" role="form" accept-charset="UTF-8">
                         <div class="form-group">
                             <label for="name" class="col-sm-3 control-label">Username</label>
                             <div class="col-sm-6">

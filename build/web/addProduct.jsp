@@ -5,6 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -22,6 +23,7 @@
         <link href="css/style.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="img/favicon.png" rel="icon">
         <title>Add Product</title>
     </head>
 
@@ -34,7 +36,7 @@
                 </div> 
                 <div class="panel-body">
 
-                    <form action="productManagerController" method="POST" enctype="multipart/form-data">
+                    <form action="productManagerController" method="POST" enctype="multipart/form-data" accept-charset="UTF-8">
 
                         <div class="form-group">
                             <label for="name" class="col-sm-3 control-label">Seller ID</label>

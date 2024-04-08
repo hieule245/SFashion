@@ -41,17 +41,23 @@ public class OrderManagerController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+            String url = "";
             HttpSession session = request.getSession();
             DAO dao = new DAO();
             User user = (User)session.getAttribute("user");
-            List<OrderTable> orderTables = new ArrayList<>();
+            List<OrderTable> orderTables = new ArrayList<OrderTable>();
             if("2".equals(user.getRole())){
+                url = "orderManager.jsp";
                 orderTables = dao.getOrderTableByCustomerID(user.getUserId());
             }else if("3".equals(user.getRole())){
                 orderTables = dao.getAllOrderTableForShipper();
+                url = "OrderForShipperController";
+            }else if("1".equals(user.getRole())){
+                orderTables = dao.getAllOrderTableForAdmin();
+                url = "AdminUITransactionManage.jsp";
             }
             session.setAttribute("orderList", orderTables);
-            request.getRequestDispatcher("orderManager.jsp").forward(request, response);
+            request.getRequestDispatcher(url).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -5,6 +5,7 @@
 package Controller;
 
 import DAO.DAO;
+import dto.Category;
 import dto.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -33,8 +34,10 @@ public class CategoryController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         DAO dao = new DAO();
+        List<Category> listC = dao.getAllCategories();
         int cid = Integer.parseInt(request.getParameter("cid"));
         List<Product> listP = dao.getActiveProductsByCategoryId(cid);
+        request.setAttribute("listC", listC);
         request.setAttribute("listP", listP);
         request.getRequestDispatcher("shop.jsp").forward(request, response);
     }

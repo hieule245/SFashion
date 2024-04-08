@@ -37,6 +37,10 @@ public class shopController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String indexPage = request.getParameter("index");
         String search = request.getParameter("search");
+        String action = (String) request.getParameter("action");
+        
+        
+        
         if(indexPage==null){
             indexPage = "1";
         }
@@ -53,6 +57,31 @@ public class shopController extends HttpServlet {
             list = p.findProductsByString(list,search);
         }
         List<Category> listC = dao.getAllCategories();
+        
+ if (action != null) {
+    List<Product> listResult;
+    List<Product> sortProduct;
+    
+    switch (action) {
+        case "lowest":
+             listResult = new DAO().getAllActiveProducts();
+            sortProduct = p.sortProductsByPriceAscending(listResult);
+            list = sortProduct;
+            break;
+                
+        case "highest":
+              listResult = new DAO().getAllActiveProducts();
+            sortProduct = p.sortProductsByPriceDescending(listResult);
+            list = sortProduct;
+            
+           
+            break;
+            
+        default:
+            throw new AssertionError();
+    }
+}
+        
         session.setAttribute("listCC", listC);
         session.setAttribute("listP", list);
         request.setAttribute("endPage", endPage);
@@ -72,6 +101,7 @@ public class shopController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         processRequest(request, response);
     }
 
@@ -99,4 +129,28 @@ public class shopController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    
+    public static void main(String[] args) {
+        DAO dao = new DAO();
+        Product p = new Product();
+        int index = 1;
+        List<Product> list = dao.pagingAllActiveProducts9Rows(index);
+        
+        String action = "highest";
+        if(action != null){
+            switch (action) {
+            case "highest":
+                List<Product> listResult = new DAO().getAllActiveProducts();
+                List<Product> sortProduct = p.sortProductsByPriceAscending(listResult);
+                list = sortProduct;
+                break;
+                
+            case "lowest":
+             break;
+            default:
+                throw new AssertionError();
+        }
+        }
+    }
+        
 }

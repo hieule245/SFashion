@@ -1242,17 +1242,7 @@ public class DAO extends DBconnect {
         }
         return orderTables;
     }
-    public void changeStatusForOrderTable(String status, int order_id) {
-        String query = "UPDATE [order_table] SET status = ? WHERE [order_id] = ?";
-        try {
-            PreparedStatement ps = connection.prepareStatement(query);
-            ps.setString(1, status);
-            ps.setInt(2, order_id);
-            ps.executeUpdate();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    
     public void changeStatusAndShipperForOrderTable(String status, int shipper_id, int order_id) {
         String query = "UPDATE [order_table] SET status = ?, shipper_id = ? WHERE [order_id] = ?";
         try {
@@ -1690,5 +1680,30 @@ public class DAO extends DBconnect {
         } catch (Exception e) {
         }
         return list;
+    }
+    
+//    public void changeStatusForShipper(int order_id, int statusChange){
+//        String queryString = "UPDATE [order_table] SET status = ? WHERE [order_id] = ?";
+//        try {
+//            PreparedStatement ps = connection.prepareStatement(queryString);
+//            ps.setInt(1, statusChange);
+//            ps.setInt(2, order_id);
+//            ps.executeUpdate();
+//        } catch (SQLException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
+//    }
+    
+    public void changeStatusForOrderTable(String status, int order_id) {
+        String query = "UPDATE [order_table] SET status = ? WHERE [order_id] = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setString(1, status);
+            ps.setInt(2, order_id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

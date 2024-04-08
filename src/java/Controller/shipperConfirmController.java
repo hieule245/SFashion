@@ -36,12 +36,22 @@ public class shipperConfirmController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         DAO dao = new DAO();
+        
+        PrintWriter out = response.getWriter();
         int order_id = Integer.parseInt(request.getParameter("order_id"));
-        dao.changeStatusForOrderTable("4", order_id);
-        User user = (User)session.getAttribute("user");
-        List<OrderTable> orderTables = dao.getOrderTableByShipperId(user.getUserId());
-        session.setAttribute("orderList", orderTables);
-        request.getRequestDispatcher("orderForShipper.jsp").forward(request, response);
+        int status = Integer.parseInt(request.getParameter("status"));
+        
+        out.print(status );
+        status++;
+        String statusString = String.valueOf(status);
+        
+        out.print(statusString );
+        
+//        dao.changeStatusForOrderTable(statusString, order_id);
+//        User user = (User)session.getAttribute("user");
+//        List<OrderTable> orderTables = dao.getOrderTableByShipperId(user.getUserId());
+//        session.setAttribute("orderList", orderTables);
+//        request.getRequestDispatcher("orderForShipper.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

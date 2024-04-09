@@ -336,7 +336,6 @@
                             </div>
                         </div>
                     </div>
-
                 </c:forEach>
             </div>
             <div  id="addCartStatus" class="col-12 text-center" style="color: red;"> </div>

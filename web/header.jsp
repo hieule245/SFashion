@@ -115,7 +115,6 @@
                         </c:if>
                         <c:if test="${sessionScope.user != null}">
                             <c:if test="${sessionScope.user.getRole() == '2'}">
-                                <a href="cart.jsp" class="nav-item nav-link">Shopping Cart</a>
                                 <a href="./productManagerController" class="nav-item nav-link">Product Manager</a>
                             </c:if>
                             <c:if test="${sessionScope.user.getRole() == '2' || sessionScope.user.getRole() == '3'}">
@@ -130,10 +129,6 @@
                             <a href="./Login.jsp" class="nav-item nav-link">Sign in</a>
                             <a href="Register.jsp" class="nav-item nav-link">Sign up</a>
                         </div>
-                    </c:if>
-
-                    <c:if test="${sessionScope.user.getRole() == '2'}">
-                        <a href="productManagerController" class="nav-item nav-link">Post For Sale</a>
                     </c:if>
 
                     <c:if test="${sessionScope.user.getRole() == '1'}">

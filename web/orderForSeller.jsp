@@ -63,26 +63,30 @@
                 </thead>
                 <tbody id="table-body">
                     <c:forEach items="${sessionScope.orderList}" var="item">
-                        <input type="hidden" name="order_id" value="${item.getOrderId()}">
-                        <tr>
-                            <td>${item.getOrderId()}</td>
-                            <td>${item.getCustomer().getUsername()}</td>
-                            <td>${item.getOrderDate()}</td>
-                            <td>${item.getTotalAmount()}</td>
-                            <!--Payment Method-->
-                            <c:if test="${item.getPaymentMethod() == '1'}">
-                                <td class="align-middle admin-role">Pay in cash</td>
-                            </c:if>
-                            <!--///////////////-->
-                            <!--Status-->
-                            <c:if test="${item.getStatus() == '1'}">
-                                <td class="align-middle admin-role">Waiting for Confirmation</td>
-                            </c:if>
-                            <!--///////////////-->
-                            <td><a href="OrderDetail?order_id=${item.orderId}" class="btn btn-primary" name="submit" id="view" value="view">View Detail</a></td>
-                            <td><button name="action" id="confirm" value="confirm">Confirm</button></td>
-                        </tr>
-                    </c:forEach> 
+                    <input type="hidden" name="order_id" value="${item.getOrderId()}">
+                    <tr>
+                        <td>${item.getOrderId()}</td>
+                        <td>${item.getCustomer().getUsername()}</td>
+                        <td>${item.getOrderDate()}</td>
+                        <td>${item.getTotalAmount()}</td>
+                        <!--Payment Method-->
+                        <c:if test="${item.getPaymentMethod() == '1'}">
+                            <td class="align-middle admin-role">Pay in cash</td>
+                        </c:if>
+                        <c:if test="${item.getPaymentMethod() == '2'}">
+                            <td class="align-middle admin-role">Pay by E-Wallet</td>
+                        </c:if>
+                        <!--///////////////-->
+                        <!--Status-->
+                        <c:if test="${item.getStatus() == '1'}">
+                            <td class="align-middle admin-role">Waiting for Confirmation</td>
+                        </c:if>
+
+                        <!--///////////////-->
+                        <td><a href="OrderDetail?order_id=${item.orderId}" class="btn btn-primary" name="submit" id="view" value="view">View Detail</a></td>
+                        <td><button name="action" id="confirm" value="confirm">Confirm</button></td>
+                    </tr>
+                </c:forEach> 
                 </tbody>
             </table>
         </form>

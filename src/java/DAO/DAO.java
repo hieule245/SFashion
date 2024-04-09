@@ -1719,16 +1719,6 @@ public class DAO extends DBconnect {
         }
         return discounts;
     }
-<<<<<<< HEAD
-//    public static void main(String[] args) {
-//        DAO dao = new DAO();
-//        dao.addChatRoom(3, 5);
-//    }
-=======
-    public static void main(String[] args) {
-        DAO dao = new DAO();
-        dao.addChatRoom(3, 5);
-    }
 
     
    public List<Product> getProductsByPriceRange(BigDecimal minPrice, BigDecimal maxPrice) {
@@ -1761,6 +1751,4 @@ public class DAO extends DBconnect {
 
     return products;
 }
-
->>>>>>> 5a7e33f8c12d1efdd28c922f5d74c04f69f6d764
 }

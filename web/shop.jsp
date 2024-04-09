@@ -115,17 +115,7 @@
                     <div class="row pb-3">
                         <div class="col-12 pb-1">
                             <div class="d-flex align-items-center justify-content-between mb-4">
-                                <form action="shopController" method="GET">
-                                    <div class="input-group">
-                                        <input name="search" id="input-search" type="text" class="form-control" placeholder="Search for products">
-                                        <button class="btn btn-outline-primary d-flex align-items-center" style="border: none; background: none;">
-                                            <span class="input-group-text bg-transparent text-primary">
-                                                <i class="fa fa-search"></i>
-                                            </span>
-                                        </button>
-                                    </div>
-
-                                </form>
+                               
                                 <div class="dropdown ml-4">
                                     <button class="btn border dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true"
                                             aria-expanded="false">
@@ -226,21 +216,7 @@
                                 <a class="text-dark" href="contact.jsp"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
                             </div>
                         </div>
-                        <div class="col-md-6 mb-5">
-                            <h5 class="font-weight-bold text-dark mb-4">New Subcribe</h5>
-                            <form action="">
-                                <div class="form-group">
-                                    <input type="text" class="form-control border-0 py-4" placeholder="Your Name" required="required" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control border-0 py-4" placeholder="Your Email"
-                                           required="required" />
-                                </div>
-                                <div>
-                                    <button class="btn btn-primary btn-block border-0 py-3" type="submit">Subscribe Now</button>
-                                </div>
-                            </form>
-                        </div>
+                       
                     </div>
                 </div>
             </div>
